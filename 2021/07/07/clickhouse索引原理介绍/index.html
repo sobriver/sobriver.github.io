@@ -1,0 +1,679 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="sobriver">
+  <meta name="keywords" content="">
+  
+  <title>clickhouse索引原理介绍 - 木叶</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/idea.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>木叶</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="clickhouse索引原理介绍">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-07 09:00" pubdate>
+        2021年7月7日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">clickhouse索引原理介绍</h1>
+            
+            <div class="markdown-body">
+              <p>clickhouse本身支持很多表引擎，这里只介绍其中最常用的MergeTree引擎。</p>
+<h3 id="建表语句"><a href="#建表语句" class="headerlink" title="建表语句"></a>建表语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> [IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span>] [db.]table_name (<br>    name1 [type1] [<span class="hljs-keyword">DEFAULT</span><span class="hljs-operator">|</span>MATERIALIZED<span class="hljs-operator">|</span>ALIAS expr1] [TTL expr1],<br>    name2 [type2] [<span class="hljs-keyword">DEFAULT</span><span class="hljs-operator">|</span>MATERIALIZED<span class="hljs-operator">|</span>ALIAS expr2] [TTL expr2],<br>    ...<br>    INDEX index_name1 expr1 TYPE type1(...) GRANULARITY value1, # 创建普通索引（跳数索引）<br>    INDEX index_name2 expr2 TYPE type2(...) GRANULARITY value2<br>) ENGINE <span class="hljs-operator">=</span> MergeTree()<br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> expr<br>[<span class="hljs-keyword">PARTITION</span> <span class="hljs-keyword">BY</span> expr] # 创建分区键索引<br>[<span class="hljs-keyword">PRIMARY</span> KEY expr] # 创建主键索引<br>[SAMPLE <span class="hljs-keyword">BY</span> expr]<br>[TTL expr [<span class="hljs-keyword">DELETE</span><span class="hljs-operator">|</span><span class="hljs-keyword">TO</span> DISK <span class="hljs-string">&#x27;xxx&#x27;</span><span class="hljs-operator">|</span><span class="hljs-keyword">TO</span> VOLUME <span class="hljs-string">&#x27;xxx&#x27;</span>], ...]<br>[SETTINGS name<span class="hljs-operator">=</span><span class="hljs-keyword">value</span>, ...]<br></code></pre></td></tr></table></figure>
+
+<p>介绍其中几个关键选项的含义：</p>
+<ul>
+<li>PARTITION BY ：分区键。 指定表数据以何种标准进行分区。分区键既可以是单个列字段，也可以通过元组的形式使用多个列字段，同时它也支持使用列表达式。</li>
+<li>ORDER BY ：排序键，用于指定在一个数据片段内，数据以何种标准排序。默认情况下主键（PRIMARY KEY）与排序键相同。</li>
+<li>PRIMARY KEY：  主键。声明后会依照主键字段生成一级索引。默认情况下，主键与排序键(ORDER BY)相同，所以通常直接使用ORDER BY代为指定主键。</li>
+<li>SETTINGS:：<strong>index_granularity</strong>选项表示索引的粒度，默认值为8192。MergeTree索引在默认情况下，每间隔8192行数据才生成一条索引。</li>
+</ul>
+<h3 id="数据存储文件"><a href="#数据存储文件" class="headerlink" title="数据存储文件"></a>数据存储文件</h3><p>下面是clickhouse在存储数据时所产生的文件， 现分别对其用途做简要说明：</p>
+<ul>
+<li>checksums.txt   校验文件，用于记录其他的各类文件（如idx, mrk等）的size和其哈希值， 用于快速校验文件的完整性和正确性。</li>
+<li>columnx.txt   列信息文件， 明文存储，记录该表的所有列信息。</li>
+<li>count.txt       计数文件，明文存储，记录当前分区下数据的总行数。</li>
+<li>primary.idx    主键索引文件</li>
+<li>列名.bin      列数据文件，使用压缩格式存储。每一列都对应一个该文件，如列age为age.bin</li>
+<li>列名.mrk     列标记文件，使用二进制存储。</li>
+<li>partition.dat   保存当前分区下分区表达式最终生成的值</li>
+<li>minmax_.idx     记录当前分区下分区字段对应原始数据的最小和最大值。</li>
+<li>skp_idx_列名.idx    跳数索引数据文件 。</li>
+<li>skp_idx_列名.mrk   跳数索引标记文件。</li>
+</ul>
+<h3 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h3><p>首先说明两个重要概念</p>
+<ul>
+<li>granule 索引粒度， 由<strong>index_granularity</strong>指定，默认8192</li>
+<li>block 列存储文件的压缩单元。每个列存文件的Block包含若干个Granule，具体多少个Granule是由参数min_compress_block_size控制，每次列的Block中写完一个Granule的数据时，它会检查当前Block Size有没有达到设定值，如果达到则会把当前Block进行压缩然后写磁盘。</li>
+</ul>
+<h4 id="主键索引"><a href="#主键索引" class="headerlink" title="主键索引"></a>主键索引</h4><p>对应文件：primary.idx </p>
+<p>与传统数据库不同， 主键索引是可以相同的。主键索引存储的是主键值和block， 且数据是按照主键进行排序的。 若查询条件中含有主键值， 则会先根据主键索引得到可能的granule范围，再根据mk标记文件中的偏移量确定数据。</p>
+<h4 id="分区键索引"><a href="#分区键索引" class="headerlink" title="分区键索引"></a>分区键索引</h4><p>数据文件：minmax_分区键名.idx</p>
+<p>记录当前分区下分区字段对应原始数据的最小和最大值。用于查询时迅速排除不需要的分区。</p>
+<h4 id="跳数索引"><a href="#跳数索引" class="headerlink" title="跳数索引"></a>跳数索引</h4><p>数据文件： skp_idx_列名.idx </p>
+<p>语法：<code>INDEX index_name1 expr1 TYPE type1(...) GRANULARITY value1</code></p>
+<p>索引的可用类型包括minmax, set, bloom_filter。</p>
+<p>和主键索引类似， 也是一种稀疏索引。因为数据是按主键排序的，主键索引统计的其实就是每个Granule粒度的主键序列最大和最小值，而Skipping索引提供的聚合函数种类更加丰富，是主键索引的一种补充能力。</p>
+<h3 id="数据插入"><a href="#数据插入" class="headerlink" title="数据插入"></a>数据插入</h3><p>MergeTree在写入一批数据时，数据总会以数据片段的形式写入磁盘，且数据片段不可修改。为了避免片段过多，ClickHouse会通过后台线程，定期合并这些数据片段，属于相同分区的数据片段会被合成一个新的片段。</p>
+<p>MergeTree表的写入链路是一个极端的batch load过程，Data Part不支持单条的append insert。每次batch insert都会生成一个新的MergeTree Data Part。如果用户单次insert一条记录，那就会为那一条记录生成一个独立的Data Part，这必然是无法接受的。一般我们使用MergeTree表引擎的时候，需要在客户端做聚合进行batch写入或者在MergeTree表的基础上创建Distributed表来代理MergeTree表的写入和查询，Distributed表默认会缓存用户的写入数据，超过一定时间或者数据量再异步转发给MergeTree表。MergeTree存储引擎对数据实时可见要求非常高的场景是不太友好的。</p>
+<h3 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h3><p>例如有如下数据，主键为x和y。</p>
+<table>
+<thead>
+<tr>
+<th align="left">x</th>
+<th align="left">y</th>
+<th align="left">z</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">A</td>
+<td align="left">a</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">A</td>
+<td align="left">a</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">A</td>
+<td align="left">c</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">B</td>
+<td align="left">c</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">B</td>
+<td align="left">c</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">C</td>
+<td align="left">a</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">C</td>
+<td align="left">a</td>
+<td align="left">1</td>
+</tr>
+</tbody></table>
+<p>假设index_granularity为2，先将数据分为多个block</p>
+<table>
+<thead>
+<tr>
+<th align="left">x</th>
+<th align="left">y</th>
+<th align="left">block-id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">A</td>
+<td align="left">a</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">A</td>
+<td align="left">a</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">A</td>
+<td align="left">c</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">B</td>
+<td align="left">c</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">B</td>
+<td align="left">b</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">C</td>
+<td align="left">a</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">C</td>
+<td align="left">a</td>
+<td align="left">4</td>
+</tr>
+</tbody></table>
+<p>primary.idx内容展示的是主键和block的关系</p>
+<table>
+<thead>
+<tr>
+<th align="left">主键</th>
+<th align="left">block</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">(A,a)</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">(A,c)</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">(B,b)</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">(C,a)</td>
+<td align="left">4</td>
+</tr>
+</tbody></table>
+<p>x.bin 和 y.bin存储对应的各个列的数据，x.mrk存储如下</p>
+<table>
+<thead>
+<tr>
+<th align="left">block-id</th>
+<th align="left">offset</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">1-3</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">4-9</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">10-30</td>
+</tr>
+</tbody></table>
+<p>查询过程如下：</p>
+<p>1、查询条件<br>2、通过查询条件的主键，可以根据primary.idx得出数据落在哪些block<br>3、根据block id 到各自的 mrk上寻找对应的offset<br>4、根据offset去bin中获取对应的数据，加载到内存中向量化操作，过滤</p>
+<p>从以上可以看出：</p>
+<ul>
+<li>查询条件含有主键会减少很多不必要的磁盘IO</li>
+<li>查询返回的值中列越少， 读取的列标记文件和列数据文件就越少，磁盘IO也会降低很多</li>
+</ul>
+<p>参考文章</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023089140">https://segmentfault.com/a/1190000023089140</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/761931">https://developer.aliyun.com/article/761931</a></li>
+<li><a target="_blank" rel="noopener" href="https://clickhouse.tech/docs/zh/engines/table-engines/mergetree-family/mergetree/">https://clickhouse.tech/docs/zh/engines/table-engines/mergetree-family/mergetree/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/2019/11/21/5dd5815e95f7e/">https://www.dazhuanlan.com/2019/11/21/5dd5815e95f7e/</a></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B/%E4%B8%AD%E9%97%B4%E4%BB%B6/clickhouse/">clickhouse</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/clickhouse/">clickhouse</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8E%9F%E7%90%86/">原理</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/07/09/mybatis%E7%9B%B8%E5%85%B3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">mybatis相关</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/05/Java%E7%9A%84HashMap%E5%88%86%E6%9E%90/">
+                        <span class="hidden-mobile">Java的HashMap分析</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
