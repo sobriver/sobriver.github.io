@@ -1,0 +1,705 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/title.png">
+  <link rel="icon" href="/img/title.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="sobriver">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="写这篇文章的目的， 主要是为了记录一下自己使用的笔记软件的过程以及最终选择（当然也只是目前的选择， 后续会不会变就不清楚了）， 给其他同样有此问题的人一个参考。 先说一下本人选择笔记软件的一些原则：  数据要掌握在自己手上，放在云上的我感觉都不安全， 因为开发该软件的公司哪天收费了或倒闭了， 你自己的数据就没了或者不好弄出来 要多端都能使用 方便同步 最好能自己部署  为知笔记推荐星级：★ 这是我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人笔记软件的选择">
+<meta property="og:url" content="https://sobriver.top/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0%E8%BD%AF%E4%BB%B6%E7%9A%84%E9%80%89%E6%8B%A9.html">
+<meta property="og:site_name" content="知秋">
+<meta property="og:description" content="写这篇文章的目的， 主要是为了记录一下自己使用的笔记软件的过程以及最终选择（当然也只是目前的选择， 后续会不会变就不清楚了）， 给其他同样有此问题的人一个参考。 先说一下本人选择笔记软件的一些原则：  数据要掌握在自己手上，放在云上的我感觉都不安全， 因为开发该软件的公司哪天收费了或倒闭了， 你自己的数据就没了或者不好弄出来 要多端都能使用 方便同步 最好能自己部署  为知笔记推荐星级：★ 这是我">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/wiki/zadam/trilium/images/screenshot.png">
+<meta property="og:image" content="https://hw-picture.oss-cn-beijing.aliyuncs.com/202207031614671.png">
+<meta property="article:published_time" content="2022-07-03T16:30:00.000Z">
+<meta property="article:modified_time" content="2022-07-03T16:30:00.000Z">
+<meta property="article:author" content="sobriver">
+<meta property="article:tag" content="折腾">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wiki/zadam/trilium/images/screenshot.png">
+  
+  
+  
+  <title>个人笔记软件的选择 - 知秋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sobriver.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><script async defer data-website-id="d4fba8dc-448b-4962-ba63-b25b6160247c" src="https://statis.acchw.top/umami.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>知秋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html">
+                <i class="iconfont icon-kaggle"></i>
+                虫洞
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="个人笔记软件的选择"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-03 16:30" pubdate>
+          2022年7月3日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">个人笔记软件的选择</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>写这篇文章的目的， 主要是为了记录一下自己使用的笔记软件的过程以及最终选择（当然也只是目前的选择， 后续会不会变就不清楚了）， 给其他同样有此问题的人一个参考。</p>
+<p>先说一下本人选择笔记软件的一些原则：</p>
+<ul>
+<li>数据要掌握在自己手上，放在云上的我感觉都不安全， 因为开发该软件的公司哪天收费了或倒闭了， 你自己的数据就没了或者不好弄出来</li>
+<li>要多端都能使用</li>
+<li>方便同步</li>
+<li>最好能自己部署</li>
+</ul>
+<h1 id="为知笔记"><a href="#为知笔记" class="headerlink" title="为知笔记"></a>为知笔记</h1><p>推荐星级：★</p>
+<p>这是我个人早起用的时间比较长的一个笔记软件， 是一个传统的笔记软件， 使用过程中陆陆续续出现过一些晓问题， 后来为知强制收费， 加上对其富文本格式的担心，花了一天的时间把数据都迁移出来了。</p>
+<p>为知笔记有一个官方的docker镜像， 可以自己部署使用， 但是有些功能还是需要连接到官方使用， 所以感觉不是很友好。</p>
+<h1 id="typora-坚果云"><a href="#typora-坚果云" class="headerlink" title="typora + 坚果云"></a>typora + 坚果云</h1><p>推荐星级：★★★</p>
+<p>在不使用为知笔记之后， 我一直在寻找替代品， 包括印象笔记，有道笔记等， 但都不符合预期， 且不符合数据掌握在自己手中的原则。在这个过程中，我了解到了markdown这一文本格式， 就迅速的爱上他了。</p>
+<p>再结合数据同步与备份， 便使用了 <code>typora + 坚果云</code>这一组合。这个组合其实还蛮好用的， 但是其有一个三个致命缺点：</p>
+<ul>
+<li>不能全文搜索， 特别是笔记一多，有时想找个之前记录的东西又不记的文件名， 很费事</li>
+<li>目录树的组织不够清晰明了</li>
+<li>坚果云的免费额度较低， 不过只作为笔记同步的话一般够用了</li>
+</ul>
+<p>当然，这个组合我目前还在轻微使用， 但是很少用来记录笔记了。</p>
+<h1 id="confluence"><a href="#confluence" class="headerlink" title="confluence"></a>confluence</h1><p>推荐星级：★★★</p>
+<p>这是在公司使用的一个wiki系统， 感觉挺好用的， 然后网上找了一下， 发现有它的docker镜像， 然后就在自己的VPS上部署用了一下， 确实还可以。</p>
+<p>这个是完全基于web的应用， 所以在各个端上都能完美的适配。</p>
+<p>有几个不好的地方说明一下：</p>
+<ul>
+<li>资源占用较大。 咱的VPS是一个小水管， 属实有点耗不起</li>
+<li>对markdown的支持不是很全面。 有些操作还是需要手动点击相应的按钮才能实现。</li>
+</ul>
+<p>总体来说， 这个还是比较好用的。本人也有一篇使用docker介绍其安装的博客。</p>
+<h1 id="notion"><a href="#notion" class="headerlink" title="notion"></a>notion</h1><p>推荐星级：★★★</p>
+<p>说实话， 这个软件我是非常喜欢的， 不管是文字输入还是排版等方面， 都很舒适， 特别是其<code>database</code>功能，真的很强大。但是其有一个致命缺点， 其服务器在国外， 虽然现在国内在不挂梯子的情况下也能访问， 但是网速还是比较慢， 而且谁也不知道哪天就被ban了。</p>
+<p>同时也不支持自建服务， 所以我最终还是放弃了。 但是这个软件给我带来的结果就是， 我后面寻找的软件很多都是以它为标准的， 或者说就是寻找它的替代品。 </p>
+<p>github上有个非常火的项目<a target="_blank" rel="noopener" href="https://github.com/AppFlowy-IO/AppFlowy">AppFlowy</a> 就是它的一个替代品， 但是现在还很不完善， 所以暂时放弃。</p>
+<p>如果你对上面这个缺点不是很在乎， 那么notion将是一个比较好的选择。</p>
+<h1 id="outline"><a href="#outline" class="headerlink" title="outline"></a>outline</h1><p>推荐星级：★</p>
+<p>支持自建服务。但是其登录选项不好弄， 个人弄了半天才成功， 而且使用之后， 感觉也不是很惊艳， 所以试用了一下就放弃了。</p>
+<h1 id="trilium"><a href="#trilium" class="headerlink" title="trilium"></a>trilium</h1><p>推荐星级：★</p>
+<p>支持自建服务。 说实话， 它的颜值确实不敢恭维，所以在试用了一下也放弃了。</p>
+<p><img src="https://raw.githubusercontent.com/wiki/zadam/trilium/images/screenshot.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="思源笔记"><a href="#思源笔记" class="headerlink" title="思源笔记"></a>思源笔记</h1><p>推荐星级：★★★★★</p>
+<p>这是我目前在用的主力软件。和notion比较像，功能还是很强大的。对mardown的支持也非常好， 基本上我平时用的markdown语法都支持。搜索功能也很强大， 总之，比较完美的符合了我现在的一切要求。</p>
+<p>支持docker伺服，所以我直接部署在VPS上了， 只需要做好VPS的数据备份即可。</p>
+<p>下面这张是我用的集市里面的notion主题， 颜值一下子就上去了。</p>
+<p><img src="https://hw-picture.oss-cn-beijing.aliyuncs.com/202207031614671.png" srcset="/img/loading.gif" lazyload></p>
+<p>贴一个docker-compose.yml文件， 直接启动即可。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3&quot;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">siyuan:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">b3log/siyuan</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">siyuan</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">$&#123;PWD&#125;/data:/home/siyuan/Documents/SiYuan</span><br>    <span class="hljs-attr">command:</span> [<span class="hljs-string">--resident=true</span>,<span class="hljs-string">--ssl=true</span>,<span class="hljs-string">--servePath=&#x27;你的域名&#x27;</span>]<br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">6806</span><span class="hljs-string">:6806</span><br></code></pre></td></tr></table></figure>
+
+<p>配置nginx转发的时候， 需要注意一下， &#x2F;ws的也需要配置。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> ssl;<br>    <span class="hljs-attribute">server_name</span> 你的域名<br>    charset utf-<span class="hljs-number">8</span>;<br>    <span class="hljs-attribute">ssl_certificate</span>   /etc/nginx/cert/域名pem文件;<br>    <span class="hljs-attribute">ssl_certificate_key</span>   /etc/nginx/cert/域名key文件;<br>    <span class="hljs-attribute">ssl_session_timeout</span> <span class="hljs-number">5m</span>;<br>    <span class="hljs-attribute">ssl_ciphers</span> ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;<br>    <span class="hljs-attribute">ssl_protocols</span> TLSv1 TLSv1.<span class="hljs-number">1</span> TLSv1.<span class="hljs-number">2</span>;<br>    <span class="hljs-attribute">ssl_prefer_server_ciphers</span> <span class="hljs-literal">on</span>;<br>    <span class="hljs-section">location</span> / &#123;<br>        <span class="hljs-attribute">proxy_pass</span> http://localhost:6806;<br>    &#125;<br>    <span class="hljs-section">location</span> /ws &#123;<br>        <span class="hljs-attribute">proxy_pass</span> http://localhost:6806;<br>        <span class="hljs-attribute">proxy_read_timeout</span> <span class="hljs-number">60s</span>;<br>        <span class="hljs-attribute">proxy_http_version</span> <span class="hljs-number">1</span>.<span class="hljs-number">1</span>;<br>        <span class="hljs-attribute">proxy_set_header</span> Upgrade <span class="hljs-variable">$http_upgrade</span>;<br>        <span class="hljs-attribute">proxy_set_header</span> Connection <span class="hljs-string">&#x27;Upgrade&#x27;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/" class="category-chain-item">其他</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8A%98%E8%85%BE/">#折腾</a>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>个人笔记软件的选择</div>
+      <div>https://sobriver.top/折腾/其他/个人笔记软件的选择.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>sobriver</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月3日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA.html" title="个人博客工具搭建">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">个人博客工具搭建</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E7%BC%96%E7%A8%8B/java/ConcurrentHashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.html" title="ConcurrentHashMap源码分析">
+                        <span class="hidden-mobile">ConcurrentHashMap源码分析</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.5.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.5.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://remark.acchw.top","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,730 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/title.png">
+  <link rel="icon" href="/img/title.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="sobriver">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="记录一下kvm安装windows过程中的步骤以及注意点。 先说明一下环境：  host： ubuntu server 20.04 vm:  windows server 2019  安装前准备 winddows server 2019 的镜像： 可以去msdn I tell you上下载 virtio驱动：注意windows server 2019对应的是0.1.171， 下载其中的virtio-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu 20.04 kvm安装windows">
+<meta property="og:url" content="https://sobriver.top/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/ubuntu%2020.04%20kvm%E5%AE%89%E8%A3%85windows.html">
+<meta property="og:site_name" content="知秋">
+<meta property="og:description" content="记录一下kvm安装windows过程中的步骤以及注意点。 先说明一下环境：  host： ubuntu server 20.04 vm:  windows server 2019  安装前准备 winddows server 2019 的镜像： 可以去msdn I tell you上下载 virtio驱动：注意windows server 2019对应的是0.1.171， 下载其中的virtio-">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hw-picture.oss-cn-beijing.aliyuncs.com/image-20220216090809661.png">
+<meta property="og:image" content="https://hw-picture.oss-cn-beijing.aliyuncs.com/image-20220216090828118.png">
+<meta property="article:published_time" content="2021-12-01T11:10:15.000Z">
+<meta property="article:modified_time" content="2021-12-09T11:10:15.000Z">
+<meta property="article:author" content="sobriver">
+<meta property="article:tag" content="折腾">
+<meta property="article:tag" content="kvm">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hw-picture.oss-cn-beijing.aliyuncs.com/image-20220216090809661.png">
+  
+  
+  
+  <title>ubuntu 20.04 kvm安装windows - 知秋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sobriver.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><script async defer data-website-id="d4fba8dc-448b-4962-ba63-b25b6160247c" src="https://statis.acchw.top/umami.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>知秋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html">
+                <i class="iconfont icon-kaggle"></i>
+                虫洞
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ubuntu 20.04 kvm安装windows"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-12-01 11:10" pubdate>
+          2021年12月1日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ubuntu 20.04 kvm安装windows</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>记录一下kvm安装windows过程中的步骤以及注意点。</p>
+<p>先说明一下环境：</p>
+<ul>
+<li>host： ubuntu server 20.04</li>
+<li>vm:  windows server 2019</li>
+</ul>
+<h1 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h1><ol>
+<li>winddows server 2019 的镜像： 可以去msdn I tell you上下载</li>
+<li>virtio驱动：注意windows server 2019对应的是0.1.171， 下载其中的<code>virtio-win-0.1.171_amd64.vfd</code>文件  ： <a target="_blank" rel="noopener" href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.171-1/">下载地址</a></li>
+</ol>
+<h1 id="安装kvm"><a href="#安装kvm" class="headerlink" title="安装kvm"></a>安装kvm</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst virt-manager<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h1><p>这里使用桥接模式， 这样就可以保证虚拟出来的windows server与主机是平级的， 其他设备和该虚拟机能够互通。</p>
+<p>编辑文件 <code>/etc/netplan/00-installer-config.yaml</code>(每个人在&#x2F;etc&#x2F;netpaln下的文件名可能不一样)</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">network:</span><br>  <span class="hljs-attr">version:</span> <span class="hljs-number">2</span>      <br>  <span class="hljs-attr">ethernets:</span><br>    <span class="hljs-attr">eno1:</span><br>      <span class="hljs-attr">dhcp4:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">enp2s0:</span><br>      <span class="hljs-attr">dhcp4:</span> <span class="hljs-literal">no</span><br>      <span class="hljs-attr">addresses:</span> [<span class="hljs-number">10.0</span><span class="hljs-number">.0</span><span class="hljs-number">.239</span><span class="hljs-string">/24</span>]<br>      <span class="hljs-attr">optional:</span> <span class="hljs-literal">true</span><br>      <span class="hljs-attr">gateway4:</span> <span class="hljs-number">10.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span><br>      <span class="hljs-attr">nameservers:</span><br>        <span class="hljs-attr">addresses:</span> [<span class="hljs-number">8.8</span><span class="hljs-number">.8</span><span class="hljs-number">.8</span>,<span class="hljs-number">114.114</span><span class="hljs-number">.114</span><span class="hljs-number">.114</span>]<br>  <span class="hljs-attr">bridges:</span><br>    <span class="hljs-attr">br2:</span><br>      <span class="hljs-attr">interfaces:</span> [<span class="hljs-string">enp2s0</span>]<br>      <span class="hljs-attr">dhcp4:</span> <span class="hljs-literal">no</span><br>      <span class="hljs-attr">addresses:</span> [<span class="hljs-number">10.0</span><span class="hljs-number">.0</span><span class="hljs-number">.240</span><span class="hljs-string">/24</span>]<br>      <span class="hljs-attr">optional:</span> <span class="hljs-literal">true</span><br>      <span class="hljs-attr">gateway4:</span> <span class="hljs-number">10.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span><br>      <span class="hljs-attr">nameservers:</span><br>        <span class="hljs-attr">addresses:</span> [<span class="hljs-number">8.8</span><span class="hljs-number">.8</span><span class="hljs-number">.8</span>,<span class="hljs-number">114.114</span><span class="hljs-number">.114</span><span class="hljs-number">.114</span>] <br></code></pre></td></tr></table></figure>
+
+<p>有几点需要注意：</p>
+<ul>
+<li>eno1是另外一个网卡， 没用， 可以不用配置</li>
+<li><strong>此处使用的是网卡是enp2s0</strong></li>
+<li>设置桥接的关键是bridges配置， 此处指定了虚拟机的IP： 10.0.0.240， 后续都会用这个IP来访问虚拟机</li>
+</ul>
+<p>编辑保存完之后， 执行<code>sudo netplan apply</code></p>
+<h1 id="安装虚拟机"><a href="#安装虚拟机" class="headerlink" title="安装虚拟机"></a>安装虚拟机</h1><h2 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h2><ol>
+<li>新建文件夹 <code>mkdir -p /opt/kvm/ws2019</code></li>
+<li>将之前准备好的windows server镜像文件和virtio驱动文件上传到该文件夹下， 例如：<ol>
+<li>cn_windows_server_2019_updated_march_2019_x64_dvd_c1ffb46c.iso</li>
+<li>virtio-win-0.1.171_amd64.vfd</li>
+</ol>
+</li>
+</ol>
+<h2 id="创建虚拟硬盘文件"><a href="#创建虚拟硬盘文件" class="headerlink" title="创建虚拟硬盘文件"></a>创建虚拟硬盘文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">qemu-img create -f qcow2 /opt/kvm/ws2019/win_server_2019.qcow2 50G<br></code></pre></td></tr></table></figure>
+
+<p>此处创建的虚拟硬盘大小为50G。</p>
+<h2 id="创建虚拟机"><a href="#创建虚拟机" class="headerlink" title="创建虚拟机"></a>创建虚拟机</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs shell">virt-install \<br>--name win_server_2019 \<br>--memory 4096 \<br>--vcpus sockets=2,cores=2,threads=1 \<br>--cdrom=/opt/kvm/ws2019/cn_windows_server_2019_updated_march_2019_x64_dvd_c1ffb46c.iso \<br>--os-type=windows \<br>--os-variant=auto \<br>--disk /opt/kvm/ws2019/win_server_2019.qcow2,bus=virtio,size=50 \<br>--disk /opt/kvm/ws2019/virtio-win-0.1.171_amd64.vfd,device=floppy \<br>--network bridge=br2,model=virtio \<br>--graphics vnc,password=12358,listen=::,port=5910 \<br>--hvm \<br>--virt-type kvm<br></code></pre></td></tr></table></figure>
+
+<p>对其中几项进行说明：</p>
+<ul>
+<li>分配给虚拟机的vCPU个数由sockets、cores、threads三个参数的乘积来控制，sockets指代CPU插槽数目，cores指代每个插槽芯片的核心数，threads指代那个核心的超线程，如上所示创建的虚拟机共有4个逻辑cpu。</li>
+<li>network中填的网络名就是配置桥接网络时指定的名称。</li>
+<li>listen 指代的是虚拟机的VNC监听接口，默认是localhost，<code>0:0:0:0</code>指带所有的IPv4接口，<code>::</code>指代所有接口，包括IPv4和IPv6。<strong>password是vnc连接的密码</strong>， port是vnc连接的端口</li>
+<li>顺便说一下， 如果要安装linux虚拟机， 需要将os-type设置为<code>linux</code></li>
+</ul>
+<h2 id="windows-server-安装"><a href="#windows-server-安装" class="headerlink" title="windows server 安装"></a>windows server 安装</h2><ol>
+<li>使用vnc软件连接虚拟机，例如MobaXterm,  地址： 10.0.0.240， 密码：12358,  端口：5910</li>
+<li>进入windows server安装界面，使用自定义， 安装过程会出现看不见磁盘的情况，是因为没有加载virtio驱动的原因。<br><img src="https://hw-picture.oss-cn-beijing.aliyuncs.com/image-20220216090809661.png" srcset="/img/loading.gif" lazyload alt="image-20220216090809661"></li>
+<li>选择“加载驱动”，“浏览”，找到“软盘驱动器”，选择 amd64 -&gt; Win10,  然后点击确定， 会发现有两个驱动，一个是Ethernet网卡，一个SCSI磁盘，操作两次驱动加载完成后，磁盘就出现了，继续安装即可。<br><img src="https://hw-picture.oss-cn-beijing.aliyuncs.com/image-20220216090828118.png" srcset="/img/loading.gif" lazyload alt="image-20220216090828118"></li>
+</ol>
+<p><strong>注意</strong>：在安装的过程中， 可能会出现无法连接的问题， 不要慌， 按如下步骤执行</p>
+<ol>
+<li><code>virsh undefine [name] </code>    name是虚拟机名称</li>
+<li>然后继续执行之前的virt-install命令</li>
+</ol>
+<h1 id="虚拟机管理常用命令"><a href="#虚拟机管理常用命令" class="headerlink" title="虚拟机管理常用命令"></a>虚拟机管理常用命令</h1><p>可通过lib-virt的<code>virsh</code>来完成虚拟机生命周期管理。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">查看虚拟机运行状态</span><br>virsh list [-all]<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动</span><br>virsh start [name]<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">关机</span><br>virsh shutdown [name]<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">暂停（挂起）</span><br>virsh suspend [name]<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">删除</span><br>virsh destroy [name]<br></code></pre></td></tr></table></figure>
+
+<p>要彻底删除某个虚拟机， 需要如下几个步骤：</p>
+<ul>
+<li>virsh destroy [name]</li>
+<li>删除&#x2F;etc&#x2F;libvirt&#x2F;qemu&#x2F;下的同名xml文件</li>
+<li>重启libvirt服务 service libvirtd restart</li>
+<li>删除创建的虚拟硬盘文件</li>
+</ul>
+<h1 id="修改已有虚拟机配置"><a href="#修改已有虚拟机配置" class="headerlink" title="修改已有虚拟机配置"></a>修改已有虚拟机配置</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">关闭虚拟机</span><br>virsh shutdown [name]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">编辑， 首次需要选择编辑器</span><br>virsh edit [name]<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p>参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://ylong.net.cn/KVM_install_windows.html">https://ylong.net.cn/KVM_install_windows.html</a></li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%98%E8%85%BE/" class="category-chain-item">折腾</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/" class="category-chain-item">其他</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8A%98%E8%85%BE/">#折腾</a>
+      
+        <a href="/tags/kvm/">#kvm</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ubuntu 20.04 kvm安装windows</div>
+      <div>https://sobriver.top/折腾/其他/ubuntu 20.04 kvm安装windows.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>sobriver</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年12月1日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/docker%E5%AE%89%E8%A3%85confluence.html" title="docker安装confluence">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">docker安装confluence</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/%E7%BA%A2%E7%B1%B3AC2100%E5%88%B7pandavan%E5%8F%8A%E8%AE%BE%E7%BD%AE%E6%97%A0%E7%BA%BF%E4%B8%AD%E7%BB%A7.html" title="红米AC2100刷pandavan及设置无线中继">
+                        <span class="hidden-mobile">红米AC2100刷pandavan及设置无线中继</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.5.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.5.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://remark.acchw.top","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/title.png">
+  <link rel="icon" href="/img/title.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="sobriver">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基本原理HashMap是由数组Node&lt;K,V&gt;[] table 和链表（或者树）组成的一个复合结构。 数组被分成一个个的桶（buket），通过下面的这个算法决定元素在桶中的位置： 12&#x2F;&#x2F; n为数组长度，hash为key的哈希值p &#x3D; tab[i &#x3D; (n - 1) &amp; hash]  若p相同，则以链表形式存储。当链表长度超过阈值（TREEIFY_THRESHOLD&amp;#x3D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HashMap源码分析">
+<meta property="og:url" content="https://sobriver.top/%E7%BC%96%E7%A8%8B/java/HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.html">
+<meta property="og:site_name" content="知秋">
+<meta property="og:description" content="基本原理HashMap是由数组Node&lt;K,V&gt;[] table 和链表（或者树）组成的一个复合结构。 数组被分成一个个的桶（buket），通过下面的这个算法决定元素在桶中的位置： 12&#x2F;&#x2F; n为数组长度，hash为key的哈希值p &#x3D; tab[i &#x3D; (n - 1) &amp; hash]  若p相同，则以链表形式存储。当链表长度超过阈值（TREEIFY_THRESHOLD&amp;#x3D">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hw-picture.oss-cn-beijing.aliyuncs.com/20200911104213.jpg">
+<meta property="og:image" content="https://hw-picture.oss-cn-beijing.aliyuncs.com/image-20210323152030654.png">
+<meta property="og:image" content="https://hw-picture.oss-cn-beijing.aliyuncs.com/image-20210324180901686.png">
+<meta property="article:published_time" content="2022-06-19T21:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-08T08:30:59.353Z">
+<meta property="article:author" content="sobriver">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="jdk">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hw-picture.oss-cn-beijing.aliyuncs.com/20200911104213.jpg">
+  
+  
+  
+  <title>HashMap源码分析 - 知秋</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sobriver.top","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start --><script async defer data-website-id="d4fba8dc-448b-4962-ba63-b25b6160247c" src="https://statis.acchw.top/umami.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>知秋</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="https://foreverblog.cn/go.html">
+                <i class="iconfont icon-kaggle"></i>
+                虫洞
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="HashMap源码分析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-19 21:00" pubdate>
+          2022年6月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">HashMap源码分析</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>HashMap是由数组<code>Node&lt;K,V&gt;[] table</code> 和链表（或者树）组成的一个复合结构。</p>
+<p>数组被分成一个个的桶（buket），通过下面的这个算法决定元素在桶中的位置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// n为数组长度，hash为key的哈希值</span><br>p = tab[i = (n - <span class="hljs-number">1</span>) &amp; hash]<br></code></pre></td></tr></table></figure>
+
+<p>若p相同，则以链表形式存储。当链表长度超过阈值（TREEIFY_THRESHOLD&#x3D;8）时，则将链表转换为红黑树。</p>
+<p><img src="https://hw-picture.oss-cn-beijing.aliyuncs.com/20200911104213.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>此处为什么需要这么做?</p>
+<p>主要是基于查询的效率考虑。链表查询元素的时间复杂度为O(n)，随着链表长度的增大，查询时间也会递增。而红黑树的时间复杂度为O(logn)，此处是一个<code>以空间换时间</code>的典型案例。</p>
+<p>HashMap中几个特殊值说明：</p>
+<ul>
+<li><strong>initialCapacity</strong>：HashMap初始容量，默认为16</li>
+<li><strong>loadFactor</strong>：负载因子，默认0.75</li>
+<li><strong>threshold</strong>：键值对数量的最大值（不是table数组的长度），超过这个值，则需要扩容，会变为原先值的两倍</li>
+<li><strong>TREEIFY_THRESHOLD</strong>：链表转换红黑树阈值，默认为8， 当超过该值时， 链表就会转换为红黑树</li>
+</ul>
+<h2 id="哈希值计算"><a href="#哈希值计算" class="headerlink" title="哈希值计算"></a>哈希值计算</h2><p>key本身的哈希值不是通过hashCode得到的， 而是HashMap自己实现的一个算法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hash</span><span class="hljs-params">(Object kye)</span> &#123;<br>	<span class="hljs-type">int</span> h;<br>	<span class="hljs-keyword">return</span> (key == <span class="hljs-literal">null</span>) ? <span class="hljs-number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt;<span class="hljs-number">16</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>此处将高位数据移位到低位进行异或运算，是因为有些数据计算出来的哈希值差异主要就在高位，而其哈希寻址是忽略容量以上的高位的，所以通过这样处理， 就能有效避免上述情况的哈希碰撞。现实中，构造哈希冲突并不是很难，恶意代码就有可能会通过该手段造成大量的哈希碰撞，造成服务器CPU大量占用。</p>
+<h2 id="插入流程"><a href="#插入流程" class="headerlink" title="插入流程"></a>插入流程</h2><p>首先计算key的哈希值， 然后调用putVal()函数。</p>
+<p>下图是putval()函数的源码， 就其中的关键几步进行说明</p>
+<p><img src="https://hw-picture.oss-cn-beijing.aliyuncs.com/image-20210323152030654.png" srcset="/img/loading.gif" lazyload alt="image-20210323152030654"></p>
+<ol>
+<li><p>当数组为空，则调用<code>resize()</code>函数进行数组的初始化操作。该处代码表明HashMap中数组的初始化并不是在new的时候，而是在第一次put的时候。</p>
+</li>
+<li><p>使用<code>(n - 1) &amp; hash</code>计算数组下标，若当前项不存在，则调用<code>newNode()</code>函数在数组下标处新建一个节点。</p>
+</li>
+<li><p>当以上条件都不满足， <strong>说明该处索引已经存在节点，此时就该进行链表或树操作了</strong>。3、4、5是对应不同类型的。其中3是直接判断当前节点， 4则是树节点， 5是链表。 此处需要判断该节点处的key和待存入数据的key是否相等。判断相等的条件如下（之间是且的关系）：</p>
+<ul>
+<li>将要存入数据key的哈希值和数组下标处节点的哈希值相等</li>
+<li>将要存入数据的key和数组下标处节点的key相等（此处相等是内存地址相等或者equals比较相等都可以）</li>
+</ul>
+</li>
+<li><p>该代码表明该处数组下标处的节点是树节点， 所以此时调用<code>putTreeVal()</code>函数插入树节点。</p>
+</li>
+<li><p>当3和4都不满足时，则表明该处是一个链表，则进行链表的遍历。</p>
+</li>
+<li><p>若一直能遍历到链表尾部，则在链表尾部新建一个节点储存当前待存入数据。<strong>然后判断是否要将链表（TREEIFY_THRESHOLD）转化为红黑树</strong>， 若是则调用<code>treeifyBin()</code>函数进行链表的树化。</p>
+</li>
+<li><p>若链表中某个节点的key与待存入数据的key相等（与第3步的判断条件一样），则退出遍历。</p>
+</li>
+<li><p>判断之前是否已经存在key值相同的节点，若是此时根据onlyIfAbsent参数来决定是否将之前节点的值更新为本次要插入的值（实际上map默认的put操作该值为true,表明是覆盖插入）</p>
+</li>
+<li><p>判断是否要进行扩容操作， 若是则调用<code>resize()</code>函数进行扩容。注意此处的++resize操作可能导致线程不安全。</p>
+</li>
+</ol>
+<h2 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h2><p>resize()函数。该函数有两个用途：</p>
+<ul>
+<li>创建初始的存储数组</li>
+<li>容量不足的时候， 进行扩容</li>
+</ul>
+<p>下面是resize函数关键几步分析：</p>
+<p><img src="https://hw-picture.oss-cn-beijing.aliyuncs.com/image-20210324180901686.png" srcset="/img/loading.gif" lazyload alt="image-20210324180901686"></p>
+<p>基本流程：</p>
+<ol>
+<li>当扩容之前的数组长度大于最大值时，直接返回未扩容之前数组（也就是不进行扩容），<strong>此处表明当HashMap容量达到最大值时（Integer.MAX_VALUE)，继续插入新值虽然不会报错， 但实际上并没有生效， 返回的仍是原数组。</strong></li>
+<li>当元素个数大于阈值（默认初始容量16 * 负载因子0.75 &#x3D; 12）时进行扩容，将新数组长度和阈值都扩大为原先2倍</li>
+<li>能进入该分支表明是第一次初始化，设置数组容量大小（指定值或者默认值）和阈值大小</li>
+<li>重新初始化一个新的数组，数组长度是原先的2倍</li>
+<li><strong>开始进行重哈希</strong>，<strong>将原数组项的数据重新放入新的数组项里面，这是扩容时最主要消耗时间的地方</strong>。此处需要遍历原数组， 具体情况如下：<ol>
+<li>6处表明当前下标处没有值，则直接将元素插入到新数组项中</li>
+<li>7处表明当前数组项是一个红黑树，进行红黑树的重新赋值</li>
+<li>8处，当以上两种情况都不符合，肯定是链表节点，则进行链表的重哈希，需要遍历链表</li>
+</ol>
+</li>
+</ol>
+<p><strong>链表节点的重哈希</strong> 有必要说明一下，此处设计的比较巧妙,具体描述可见文章：<a target="_blank" rel="noopener" href="https://yikun.github.io/2015/04/01/Java-HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/">https://yikun.github.io/2015/04/01/Java-HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/</a></p>
+<p>JDK中解释resize函数的说明大意如下：</p>
+<blockquote>
+<p>当进行扩容时，因为我们每次扩容容量都是之前的2倍，任意元素在新数组中要么是原先的位置，要么是原位置移动2次幂的位置。</p>
+</blockquote>
+<p>其具体原理是利用0与0或者1进行&amp;运算结果都是0，这样在进行重hash的时候，<strong>不需要重新计算Hash值</strong>，只需要判断原先的Hash值新增的那一位是0还是1，若为0，则原先位置，若为1，则索引变为“oldCap+原索引”。</p>
+<p>这地方有几点需要注意：</p>
+<ol>
+<li>判断索引是否改变用的是 <strong>hash &amp; oldCap</strong>，此处与计算索引值**(n - 1) &amp; hash**需要区分开来</li>
+</ol>
+<h2 id="链表转化红黑树"><a href="#链表转化红黑树" class="headerlink" title="链表转化红黑树"></a>链表转化红黑树</h2><p>treeifyBin()函数。在链表长度超过8的时候，使用该函数将链表转化为红黑树。</p>
+<p>其主要思路如下：</p>
+<ol>
+<li>当整个数组桶的长度小于64时，此时并不会进行树化操作，只是进行扩容。注意，在进行扩容的时候，链表的长度有可能会变短</li>
+<li>将链表中的节点转化为树节点TreeNode，形成一个新的链表</li>
+<li>将新链表节点赋值给给定的数组项</li>
+<li>调用TreeNode的treefify()方法将该处的链表转化为红黑树，该函数大致步骤如下：<ol>
+<li>插入树节点元素，具体可以参考二叉搜索树的插入操作。在进行插入的时候，比较key的hash值来决定插入的方向。</li>
+<li>插入完成之后开始调整红黑树，使其符合红黑树的特性</li>
+</ol>
+</li>
+</ol>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>getNode()函数。提供常数时间复杂度的查找效率。</p>
+<ol>
+<li><p>根据<code>(n - 1) &amp; hash</code>计算得到该key所在的桶bucket，若桶不存在或者数组table为空，则直接返回null，根据这一点我们可以知道HashMap取元素的方法get和判断元素是否存在的<code>contanins</code>方法的时间复杂度都是O(1)</p>
+</li>
+<li><p>当桶存在时，首先判断该桶上第一个节点是否就是要找的节点（大部分情况下都是），若是直接返回该节点值</p>
+</li>
+<li><p>若不是，判断节点类型，若是红黑树，则遍历红黑树查找，若是链表，则遍历链表查找</p>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%BC%96%E7%A8%8B/java/" class="category-chain-item">java</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/java/">#java</a>
+      
+        <a href="/tags/jdk/">#jdk</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>HashMap源码分析</div>
+      <div>https://sobriver.top/编程/java/HashMap源码分析.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>sobriver</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月19日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E7%BC%96%E7%A8%8B/java/ConcurrentHashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.html" title="ConcurrentHashMap源码分析">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ConcurrentHashMap源码分析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E7%BC%96%E7%A8%8B/java/java%E5%A4%A7%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A3%81%E5%89%AA%E6%97%B6%E9%98%B2%E6%AD%A2oom.html" title="java大图片压缩与裁剪时防止oom">
+                        <span class="hidden-mobile">java大图片压缩与裁剪时防止oom</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.5.1/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.5.1/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://remark.acchw.top","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
