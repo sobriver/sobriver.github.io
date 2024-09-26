@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>崔八由</title>
+  <icon>https://acchw.top/icon.png</icon>
+  
+  <link href="https://acchw.top/atom.xml" rel="self"/>
+  
+  <link href="https://acchw.top/"/>
+  <updated>2024-05-20T00:00:00.000Z</updated>
+  <id>https://acchw.top/</id>
+  
+  <author>
+    <name>崔八由</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>acme.sh自动生成泛域名证书的几个坑</title>
+    <link href="https://acchw.top/posts/16115/"/>
+    <id>https://acchw.top/posts/16115/</id>
+    <published>2024-05-20T00:00:00.000Z</published>
+    <updated>2024-05-20T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;先说一下我的环境与配置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;域名：在namesilo上购买的&lt;/li&gt;
+&lt;li&gt;证书使用方式：nginx&lt;/li&gt;
+&lt;li&gt;nginx部署方式：docker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;说一下在使用过程中可能会遇到的一些坑，</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
+    
+    
+    <category term="acme.sh" scheme="https://acchw.top/tags/acme-sh/"/>
+    
+    <category term="证书" scheme="https://acchw.top/tags/%E8%AF%81%E4%B9%A6/"/>
+    
+    <category term="namesilo" scheme="https://acchw.top/tags/namesilo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>老了</title>
+    <link href="https://acchw.top/posts/16268/"/>
+    <id>https://acchw.top/posts/16268/</id>
+    <published>2024-03-31T00:00:00.000Z</published>
+    <updated>2024-03-31T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今天在公交上，一个应该是初中或高中的学生，让我帮忙弄一下行李箱，叫我 “叔叔”， 这好像是我印象中第一次有陌生人叫我这个称呼，看来是真老了。&lt;/p&gt;
+&lt;p&gt;但我的人生还有许多事没做，必须加紧步伐，把有限的时间花费在更有意义的事情上。&lt;/p&gt;
+&lt;p&gt;同时，</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="生活" scheme="https://acchw.top/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go学习笔记之指针</title>
+    <link href="https://acchw.top/posts/13710/"/>
+    <id>https://acchw.top/posts/13710/</id>
+    <published>2024-03-07T22:00:00.000Z</published>
+    <updated>2024-03-07T22:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;什么是指针&quot;&gt;&lt;a href=&quot;#什么是指针&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="go" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/go/"/>
+    
+    
+    <category term="go" scheme="https://acchw.top/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pve主机使用smart_ctl监控磁盘信息</title>
+    <link href="https://acchw.top/posts/3239/"/>
+    <id>https://acchw.top/posts/3239/</id>
+    <published>2024-01-30T10:10:00.000Z</published>
+    <updated>2024-01-30T10:10:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;pve中一块nvme磁盘最近偶尔会报温度过高， 所以需要加个监控， 之前已经装过node_expoter, 但是其磁盘硬件监控这一块的信息不够全面，其更多强调的是磁盘的性能，比如IO等。 温度监控这一块也有， 但是不够直观明显，而且缺少其他的一些磁盘硬件本身的信息，</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="监控" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E7%9B%91%E6%8E%A7/"/>
+    
+    
+    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="linux" scheme="https://acchw.top/tags/linux/"/>
+    
+    <category term="监控" scheme="https://acchw.top/tags/%E7%9B%91%E6%8E%A7/"/>
+    
+    <category term="prometheus" scheme="https://acchw.top/tags/prometheus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tailscale的设置与安装</title>
+    <link href="https://acchw.top/posts/3940/"/>
+    <id>https://acchw.top/posts/3940/</id>
+    <published>2024-01-18T00:00:00.000Z</published>
+    <updated>2024-01-21T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;先说一下整体的环境和安装方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pve虚拟机专门开了一个lxc容器，用于安装tailscale，并利用此容器转发流量到局域网内的其他机器上，实现外部访问内网所有机器&lt;/li&gt;
+&lt;li&gt;由于tailscale本身的中转服务器derp没有中国的节点，最近</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
+    
+    
+    <category term="tailscale" scheme="https://acchw.top/tags/tailscale/"/>
+    
+    <category term="pve" scheme="https://acchw.top/tags/pve/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go中获取某个包下定义的所有变量</title>
+    <link href="https://acchw.top/posts/50851/"/>
+    <id>https://acchw.top/posts/50851/</id>
+    <published>2024-01-11T23:10:00.000Z</published>
+    <updated>2024-01-11T23:10:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;有这样一个场景， 我们在e这个包下， 有一个err_code.go文件，在其中自定义了一个错误码结构体和一些错误码，内容如下:&lt;/p&gt;
+&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="go" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/go/"/>
+    
+    
+    <category term="go" scheme="https://acchw.top/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql是如何解决不可重复读和幻读的</title>
+    <link href="https://acchw.top/posts/21511/"/>
+    <id>https://acchw.top/posts/21511/</id>
+    <published>2023-09-11T00:00:00.000Z</published>
+    <updated>2023-09-11T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Mysql的默认隔离级别是&lt;strong&gt;可重复读&lt;/strong&gt;。并且在该级别下， 也不会出现幻读（一般意义上的可重复读是存在幻读的）， 那么Mysql是如何实现的呢？&lt;/p&gt;
+&lt;h1 id=&quot;不可重复读的解决方案&quot;&gt;&lt;a href=&quot;#不可重复读的解决方案&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="mysql" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/mysql/"/>
+    
+    
+    <category term="mysql" scheme="https://acchw.top/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一致性哈希算法解读</title>
+    <link href="https://acchw.top/posts/35513/"/>
+    <id>https://acchw.top/posts/35513/</id>
+    <published>2023-06-11T00:00:00.000Z</published>
+    <updated>2023-09-11T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;首先理解一下哈希函数的意思。&lt;/p&gt;
+&lt;h1 id=&quot;哈希函数&quot;&gt;&lt;a href=&quot;#哈希函数&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="分布式" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+    <category term="微服务" scheme="https://acchw.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    <category term="分布式" scheme="https://acchw.top/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql事务详解</title>
+    <link href="https://acchw.top/posts/42346/"/>
+    <id>https://acchw.top/posts/42346/</id>
+    <published>2023-05-29T00:00:00.000Z</published>
+    <updated>2023-05-29T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 以下都是针对InnoDb引擎， 描述的都是单机事务，说明一下个人对事务的一些理解。&lt;/p&gt;
+&lt;h1 id=&quot;事务的四大特性&quot;&gt;&lt;a href=&quot;#事务的四大特性&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="mysql" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/mysql/"/>
+    
+    
+    <category term="mysql" scheme="https://acchw.top/tags/mysql/"/>
+    
+    <category term="事务" scheme="https://acchw.top/tags/%E4%BA%8B%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用正则表达式总结</title>
+    <link href="https://acchw.top/posts/24604/"/>
+    <id>https://acchw.top/posts/24604/</id>
+    <published>2023-05-24T00:00:00.000Z</published>
+    <updated>2023-05-24T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;正则表达式语法&quot;&gt;&lt;a href=&quot;#正则表达式语法&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
+    
+    
+    <category term="正则" scheme="https://acchw.top/tags/%E6%AD%A3%E5%88%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>还是阳了</title>
+    <link href="https://acchw.top/posts/37012/"/>
+    <id>https://acchw.top/posts/37012/</id>
+    <published>2023-05-21T00:00:00.000Z</published>
+    <updated>2023-05-21T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;还是记录一下为好。时间是2023年5月17号， 我终于还是阳了。&lt;/p&gt;
+&lt;p&gt;5月17号早上起来的时候，</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="生活" scheme="https://acchw.top/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>红米AC2100 openwrt下无法进入breed</title>
+    <link href="https://acchw.top/posts/64412/"/>
+    <id>https://acchw.top/posts/64412/</id>
+    <published>2023-05-01T11:10:00.000Z</published>
+    <updated>2024-09-26T02:03:15.307Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近ac2100刷的openwrt，想换回pandavan，使用如下方法无法进入breed的web页面：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;先断电，然后找个针戳住路由器背后 Reset 小孔并插电，等路由器蓝灯一直闪烁后，浏览器输入 192.168.1.1，即可进入</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
+    
+    
+    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="路由器" scheme="https://acchw.top/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+    <category term="AC2100" scheme="https://acchw.top/tags/AC2100/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从alpine编译nginx的docker镜像</title>
+    <link href="https://acchw.top/posts/61959/"/>
+    <id>https://acchw.top/posts/61959/</id>
+    <published>2023-03-28T00:00:00.000Z</published>
+    <updated>2023-03-28T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;因为需要接入nginx监控，用的是vts模块，原生nginx并没有包含该模块，原本想着用别人已经编译好的， 但是一想后期可能还需要加入其他的模块，所以还是自己编译一个。&lt;/p&gt;
+&lt;p&gt;下面说一下具体的步骤。&lt;/p&gt;
+&lt;h1 id=&quot;编写dockerfile文件&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
+    
+    
+    <category term="nginx" scheme="https://acchw.top/tags/nginx/"/>
+    
+    <category term="docker - jenkins" scheme="https://acchw.top/tags/docker-jenkins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【算法题】字符串相加与相乘</title>
+    <link href="https://acchw.top/posts/9368/"/>
+    <id>https://acchw.top/posts/9368/</id>
+    <published>2023-02-15T00:00:00.000Z</published>
+    <updated>2023-04-23T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;因为在相加或相乘的时候，可能会出现值溢出，所以直接相加或相乘肯定是不行的， 需要另想办法。&lt;/p&gt;
+&lt;p&gt;这两道题都是模拟摆竖式进行加法与乘法， 但是有一些细节点在写的时候需要注意。&lt;/p&gt;
+&lt;h1 id=&quot;字符串相加&quot;&gt;&lt;a href=&quot;#字符串相加&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="算法题" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    
+    
+    <category term="算法" scheme="https://acchw.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="字符串" scheme="https://acchw.top/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【算法题】反转链表</title>
+    <link href="https://acchw.top/posts/43449/"/>
+    <id>https://acchw.top/posts/43449/</id>
+    <published>2023-02-12T00:00:00.000Z</published>
+    <updated>2023-02-12T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;原题链接：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="算法题" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    
+    
+    <category term="算法" scheme="https://acchw.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="链表" scheme="https://acchw.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【算法题】合并两个有序链表</title>
+    <link href="https://acchw.top/posts/64751/"/>
+    <id>https://acchw.top/posts/64751/</id>
+    <published>2023-02-12T00:00:00.000Z</published>
+    <updated>2023-02-12T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;原题链接：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="算法题" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    
+    
+    <category term="算法" scheme="https://acchw.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="链表" scheme="https://acchw.top/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo主题使用css添加网格背景</title>
+    <link href="https://acchw.top/posts/65472/"/>
+    <id>https://acchw.top/posts/65472/</id>
+    <published>2023-02-08T00:00:00.000Z</published>
+    <updated>2023-02-08T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;给hexo的博客添加一个网格背景， 此处不想使用图片， 而是直接使用css来实现，效果图如下：&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="博客" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="博客" scheme="https://acchw.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="hexo" scheme="https://acchw.top/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>live555搭建流视频服务播放视频文件</title>
+    <link href="https://acchw.top/posts/16866/"/>
+    <id>https://acchw.top/posts/16866/</id>
+    <published>2023-01-16T14:00:00.000Z</published>
+    <updated>2023-01-16T14:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;为了方便，使用docker搭建，用的是docker hub上使用人数最多的一个镜像， &lt;code&gt;docker-compose.yml&lt;/code&gt;文件内容如下所示：&lt;/p&gt;
+&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
+    
+    
+    <category term="selfhost" scheme="https://acchw.top/tags/selfhost/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM内存分配机制介绍</title>
+    <link href="https://acchw.top/posts/17167/"/>
+    <id>https://acchw.top/posts/17167/</id>
+    <published>2023-01-15T21:00:00.000Z</published>
+    <updated>2023-01-15T21:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文针对的是hotspot虚拟机， jdk版本1.8的虚拟机进行介绍。&lt;/p&gt;
+&lt;h1 id=&quot;程序计数器&quot;&gt;&lt;a href=&quot;#程序计数器&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="java" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/java/"/>
+    
+    
+    <category term="java" scheme="https://acchw.top/tags/java/"/>
+    
+    <category term="jvm" scheme="https://acchw.top/tags/jvm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jenkins使用流水线打包springboot和vue镜像</title>
+    <link href="https://acchw.top/posts/22182/"/>
+    <id>https://acchw.top/posts/22182/</id>
+    <published>2022-12-19T00:00:00.000Z</published>
+    <updated>2022-12-19T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;使用jenkins的流水线功能，可以很方便的知道各个步骤的执行进度和所用时间，还是比较方便的。&lt;/p&gt;
+&lt;p&gt;在流水线中可以使用docker进行打包， 这样就可以很方便的使用任何docker镜像，而不需要安装对应的环境。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
+    
+    
+    <category term="docker" scheme="https://acchw.top/tags/docker/"/>
+    
+    <category term="springboot" scheme="https://acchw.top/tags/springboot/"/>
+    
+    <category term="jenkins" scheme="https://acchw.top/tags/jenkins/"/>
+    
+    <category term="vue" scheme="https://acchw.top/tags/vue/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux压测和硬件测试命令 | 崔八由</title><meta name="author" content="崔八由"><meta name="copyright" content="崔八由"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="硬盘使用fio命令来进行硬盘测试。 安装：sudo apt install fio 基本参数如下： 123456789101112131415161718192021filename&#x3D;&#x2F;dev&#x2F;emcpowerb　支持文件系统或者裸设备，-filename&#x3D;&#x2F;dev&#x2F;sda2或-filename&#x3D;&#x2F;dev&#x2F;sdbdirect&#x3D;1                 测试过程绕过机器自带的buffer，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux压测和硬件测试命令">
+<meta property="og:url" content="https://acchw.top/posts/11469/index.html">
+<meta property="og:site_name" content="崔八由">
+<meta property="og:description" content="硬盘使用fio命令来进行硬盘测试。 安装：sudo apt install fio 基本参数如下： 123456789101112131415161718192021filename&#x3D;&#x2F;dev&#x2F;emcpowerb　支持文件系统或者裸设备，-filename&#x3D;&#x2F;dev&#x2F;sda2或-filename&#x3D;&#x2F;dev&#x2F;sdbdirect&#x3D;1                 测试过程绕过机器自带的buffer，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.acchw.top/avatar/blog.png">
+<meta property="article:published_time" content="2021-07-05T21:23:15.000Z">
+<meta property="article:modified_time" content="2024-09-26T02:03:15.308Z">
+<meta property="article:author" content="崔八由">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="shell">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.acchw.top/avatar/blog.png"><link rel="shortcut icon" href="https://pic.acchw.top/avatar/blog.png"><link rel="canonical" href="https://acchw.top/posts/11469/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux压测和硬件测试命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-26 02:03:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_3874423_d8dy87kes0i.css"><!-- hexo injector head_end start --><script async defer data-website-id="0286de70-2b73-416a-a729-0c842e2a5a19" src="https://statis.acchw.top/umami.js"></script><link rel="stylesheet" type="text/css" href="/css/custom.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="崔八由" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic.acchw.top/avatar/blog.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">52</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyefill"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-daohang"></i><span> 导航</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-gf-tags2"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-linux"></i><span> linux手册</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/55955/"><span> linux命令参考</span></a></li><li><a class="site-page child" href="/posts/41179/"><span> shell语法参考</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/board/"><i class="fa-fw iconfont icon-liuyanban-05"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-guanyu"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://travellings.link"><i class="fa-fw iconfont icon-trainhuoche"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="崔八由"><img class="site-icon" src="https://pic.acchw.top/avatar/blog.png"/><span class="site-name">崔八由</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyefill"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-daohang"></i><span> 导航</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-gf-tags2"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-linux"></i><span> linux手册</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/55955/"><span> linux命令参考</span></a></li><li><a class="site-page child" href="/posts/41179/"><span> shell语法参考</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/board/"><i class="fa-fw iconfont icon-liuyanban-05"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-guanyu"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://travellings.link"><i class="fa-fw iconfont icon-trainhuoche"></i><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Linux压测和硬件测试命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-05T21:23:15.000Z" title="发表于 2021-07-05 21:23:15">2021-07-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-26T02:03:15.308Z" title="更新于 2024-09-26 02:03:15">2024-09-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/linux/">linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span id="" data-flag-title="Linux压测和硬件测试命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="waline-pageview-count" data-path="/posts/11469/"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/11469/#post-comment"><span class="waline-comment-count" data-path="/posts/11469/"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div><article class="post-content" id="article-container"><h3 id="硬盘"><a href="#硬盘" class="headerlink" title="硬盘"></a>硬盘</h3><p>使用fio命令来进行硬盘测试。</p>
+<p>安装：<code>sudo apt install fio</code></p>
+<p>基本参数如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">filename=/dev/emcpowerb　支持文件系统或者裸设备，-filename=/dev/sda2或-filename=/dev/sdb</span><br><span class="line">direct=1                 测试过程绕过机器自带的buffer，使测试结果更真实</span><br><span class="line">rw=randwread             测试随机读的I/O</span><br><span class="line">rw=randwrite             测试随机写的I/O</span><br><span class="line">rw=randrw                测试随机混合写和读的I/O</span><br><span class="line">rw=read                  测试顺序读的I/O</span><br><span class="line">rw=write                 测试顺序写的I/O</span><br><span class="line">rw=rw                    测试顺序混合写和读的I/O</span><br><span class="line">bs=4k                    单次io的块文件大小为4k</span><br><span class="line">bsrange=512-2048         同上，提定数据块的大小范围</span><br><span class="line">size=5g                  本次的测试文件大小为5g，以每次4k的io进行测试</span><br><span class="line">numjobs=30               本次的测试线程为30</span><br><span class="line">runtime=1000             测试时间为1000秒，如果不写则一直将5g文件分4k每次写完为止</span><br><span class="line">time_based: 如果在runtime指定的时间还没到时文件就被读写完成，将继续重复直到runtime时间结束。</span><br><span class="line">ioengine=psync           io引擎使用pync方式，如果要使用libaio引擎，需要yum install libaio-devel包</span><br><span class="line">rwmixwrite=30            在混合读写的模式下，写占30%</span><br><span class="line">group_reporting          关于显示结果的，汇总每个进程的信息</span><br><span class="line">此外</span><br><span class="line">lockmem=1g               只使用1g内存进行测试</span><br><span class="line">zero_buffers             用0初始化系统buffer</span><br><span class="line">nrfiles=8                每个进程生成文件的数量</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="随机读"><a href="#随机读" class="headerlink" title="随机读"></a>随机读</h4><p>向磁盘写一个2G文件，10线程，随机读1分钟</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fio -filename=/tmp/test_randread -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=16k -size=2G -numjobs=10 -runtime=60 -group_reporting -name=mytest</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="随机写"><a href="#随机写" class="headerlink" title="随机写"></a>随机写</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=16k -size=2G -numjobs=10 -runtime=60 -group_reporting -name=mytest</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="顺序读"><a href="#顺序读" class="headerlink" title="顺序读"></a>顺序读</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=16k -size=2G -numjobs=10 -runtime=60 -group_reporting -name=mytest</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="顺序写"><a href="#顺序写" class="headerlink" title="顺序写"></a>顺序写</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=write -ioengine=psync -bs=16k -size=2G -numjobs=10 -runtime=60 -group_reporting -name=mytest</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h3><p>测试局域网内设备之间的网速， 使用iperf3 进行测试。</p>
+<p>安装：</p>
+<ul>
+<li>ubuntu:  <code>apt install iperf3 </code></li>
+<li>windows: 去官网下载文件直接解压， 然后使用cmd运行即可</li>
+</ul>
+<ol>
+<li><p>在局域网内某台服务器上（假设该台机器IP为10.0.0.239）启动iperf3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iperf3 -s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在局域网内的另一台机器上运行命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iperf3 -c 10.0.0.239</span><br></pre></td></tr></table></figure>
+
+<p>即可得到网速输出结果</p>
+</li>
+</ol>
+<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>使用stress来进行。</p>
+<p>安装： <code>apt install stress</code></p>
+<p>主要参数：</p>
+<ul>
+<li><strong>-c, –cpu N</strong>       产生 N 个进程，每个进程都反复不停的计算随机数的平方根</li>
+<li><strong>-i, –io N</strong>         产生 N 个进程，每个进程反复调用 sync() 将内存上的内容写到硬盘上</li>
+<li><strong>-m, –vm N</strong>       产生 N 个进程，每个进程不断分配和释放内存</li>
+<li><strong>–vm-bytes B</strong>   指定分配内存的大小</li>
+<li><strong>–vm-stride B</strong>   不断的给部分内存赋值，让 COW(Copy On Write)发生</li>
+<li><strong>–vm-hang N</strong>   指示每个消耗内存的进程在分配到内存后转入睡眠状态 N 秒，然后释放内存，一直重复执行这个过程</li>
+<li><strong>–vm-keep</strong>     一直占用内存，区别于不断的释放和重新分配(默认是不断释放并重新分配内存)</li>
+<li><strong>-d, –hadd N</strong>      产生 N 个不断执行 write 和 unlink 函数的进程(创建文件，写入内容，删除文件)</li>
+<li><strong>–hadd-bytes B</strong> 指定文件大小</li>
+<li><strong>-t, –timeout N</strong>    在 N 秒后结束程序</li>
+<li><strong>–backoff N</strong>      等待N微妙后开始运行 </li>
+<li><strong>-q, –quiet</strong>       程序在运行的过程中不输出信息</li>
+<li><strong>-n, –dry-run</strong>     输出程序会做什么而并不实际执行相关的操作</li>
+<li><strong>–version</strong>        显示版本号</li>
+<li><strong>-v, –verbose</strong>     显示详细的信息</li>
+</ul>
+<p>压满CPU命令，其中4是CPU核心数。通过调用 sqrt 函数计算由 rand 函数产生的随机数的平方根实现。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stress -c 4</span><br></pre></td></tr></table></figure>
+
+<p>在压测过程中每隔1s实时显示主频：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n1 &quot;cat /proc/cpuinfo | grep \&quot;^[c]pu MHz\&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/linux/">linux</a><a class="post-meta__tags" href="/tags/shell/">shell</a></div><div class="post_share"></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98"><span class="toc-number">1.</span> <span class="toc-text">硬盘</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E8%AF%BB"><span class="toc-number">1.1.</span> <span class="toc-text">随机读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E5%86%99"><span class="toc-number">1.2.</span> <span class="toc-text">随机写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%AF%BB"><span class="toc-number">1.3.</span> <span class="toc-text">顺序读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E5%86%99"><span class="toc-number">1.4.</span> <span class="toc-text">顺序写</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C"><span class="toc-number">2.</span> <span class="toc-text">网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU"><span class="toc-number">3.</span> <span class="toc-text">CPU</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 崔八由</div><div class="footer_custom_text">京ICP备20004941号-1 </br> <a href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="https://img.foreverblog.cn/wormhole_1_tp.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://remark.acchw.top',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    btf.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.1.2/dist/waline.min.css')
+      const { init } = await import('https://cdn.jsdelivr.net/npm/@waline/client@3.1.2/dist/waline.min.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

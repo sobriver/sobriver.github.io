@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>mysql事务详解 | 崔八由</title><meta name="author" content="崔八由"><meta name="copyright" content="崔八由"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="以下都是针对InnoDb引擎， 描述的都是单机事务，说明一下个人对事务的一些理解。 事务的四大特性这四个特性并不是平级的关系。准确的说， 一致性是最基本的属性，其他的属性都是为了保证一致性而存在的。 Atomicity 原子性 整个事务是一个整体，是程序运行时不可分割的最小工作单位。  一个事务中的所有操作要么全部执行成功，要么全部都不执行。任何一条语句执行失败，都会导致事务回滚。 实现方式：u">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql事务详解">
+<meta property="og:url" content="https://acchw.top/posts/42346/index.html">
+<meta property="og:site_name" content="崔八由">
+<meta property="og:description" content="以下都是针对InnoDb引擎， 描述的都是单机事务，说明一下个人对事务的一些理解。 事务的四大特性这四个特性并不是平级的关系。准确的说， 一致性是最基本的属性，其他的属性都是为了保证一致性而存在的。 Atomicity 原子性 整个事务是一个整体，是程序运行时不可分割的最小工作单位。  一个事务中的所有操作要么全部执行成功，要么全部都不执行。任何一条语句执行失败，都会导致事务回滚。 实现方式：u">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.acchw.top/avatar/blog.png">
+<meta property="article:published_time" content="2023-05-29T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-29T00:00:00.000Z">
+<meta property="article:author" content="崔八由">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="事务">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.acchw.top/avatar/blog.png"><link rel="shortcut icon" href="https://pic.acchw.top/avatar/blog.png"><link rel="canonical" href="https://acchw.top/posts/42346/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'mysql事务详解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-29 00:00:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_3874423_d8dy87kes0i.css"><!-- hexo injector head_end start --><script async defer data-website-id="0286de70-2b73-416a-a729-0c842e2a5a19" src="https://statis.acchw.top/umami.js"></script><link rel="stylesheet" type="text/css" href="/css/custom.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="崔八由" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pic.acchw.top/avatar/blog.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">52</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyefill"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-daohang"></i><span> 导航</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-gf-tags2"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-linux"></i><span> linux手册</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/55955/"><span> linux命令参考</span></a></li><li><a class="site-page child" href="/posts/41179/"><span> shell语法参考</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/board/"><i class="fa-fw iconfont icon-liuyanban-05"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-guanyu"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://travellings.link"><i class="fa-fw iconfont icon-trainhuoche"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="崔八由"><img class="site-icon" src="https://pic.acchw.top/avatar/blog.png"/><span class="site-name">崔八由</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw iconfont icon-shouyefill"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-daohang"></i><span> 导航</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw iconfont icon-shijianzhou"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw iconfont icon-gf-tags2"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw iconfont icon-fenlei"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-linux"></i><span> linux手册</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/posts/55955/"><span> linux命令参考</span></a></li><li><a class="site-page child" href="/posts/41179/"><span> shell语法参考</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/board/"><i class="fa-fw iconfont icon-liuyanban-05"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-guanyu"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://travellings.link"><i class="fa-fw iconfont icon-trainhuoche"></i><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">mysql事务详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-29T00:00:00.000Z" title="发表于 2023-05-29 00:00:00">2023-05-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-29T00:00:00.000Z" title="更新于 2023-05-29 00:00:00">2023-05-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/mysql/">mysql</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span id="" data-flag-title="mysql事务详解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="waline-pageview-count" data-path="/posts/42346/"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/42346/#post-comment"><span class="waline-comment-count" data-path="/posts/42346/"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div><article class="post-content" id="article-container"><p> 以下都是针对InnoDb引擎， 描述的都是单机事务，说明一下个人对事务的一些理解。</p>
+<h1 id="事务的四大特性"><a href="#事务的四大特性" class="headerlink" title="事务的四大特性"></a>事务的四大特性</h1><p>这四个特性并不是平级的关系。准确的说， 一致性是最基本的属性，其他的属性都是为了保证一致性而存在的。</p>
+<h2 id="Atomicity-原子性"><a href="#Atomicity-原子性" class="headerlink" title="Atomicity 原子性"></a>Atomicity 原子性</h2><blockquote>
+<p>整个事务是一个整体，是程序运行时不可分割的最小工作单位。</p>
+</blockquote>
+<p>一个事务中的所有操作要么全部执行成功，要么全部都不执行。任何一条语句执行失败，都会导致事务回滚。</p>
+<p><strong>实现方式</strong>：undo log，当执行失败的时候，使用undo log进行回滚。</p>
+<h2 id="Isolation-隔离性"><a href="#Isolation-隔离性" class="headerlink" title="Isolation 隔离性"></a>Isolation 隔离性</h2><blockquote>
+<p>一个事务所做的修改在该事务未提交之前，对其他事务不可见。</p>
+</blockquote>
+<p>为什么会出现隔离性的需求？ </p>
+<p>本质是因为并发， 试想一下， 如果没有并发，所有事务都是串行执行的，那么也就不会存在隔离性的问题了。所以mysql提出了隔离级别的概念， 针对不同的隔离级别，进行不同的处理， 这在下文的隔离级别会有详细描述。</p>
+<p>那么， 如何解决并发造成的数据一致性问题？</p>
+<p>第一个想法自然是<strong>加锁</strong>，给数据加锁，相当于让各个事务串行执行，自然就不存在数据一致性的问题了。同时为了提高加锁的效率和粒度，mysql针对锁提出了不同的类别，比如间隙锁、排他锁等。</p>
+<p>加锁会造成一个比较大的问题， 就是并发效率不高，即使在锁上面进行优化， 也只能治标不治本，所以要寻找一种不加锁的方式， 答案就是<strong>数据冗余</strong>， mysql基于此实现了mvcc(多版本并发控制)， 下文会有详细描述。</p>
+<p><strong>实现方式</strong>：锁和mvcc</p>
+<h2 id="Durability-持久性"><a href="#Durability-持久性" class="headerlink" title="Durability 持久性"></a>Durability 持久性</h2><blockquote>
+<p>数据一旦提交，结果就是永久性的，并不因为宕机、重启等情况丢失。</p>
+<p>一般理解就是写入硬盘保存成功。</p>
+</blockquote>
+<p><strong>实现方式</strong>：redo log。数据写入磁盘是通过redo log进行的， redo log存储的是对于每个页修改的物理描述。</p>
+<h2 id="Consistency-一致性"><a href="#Consistency-一致性" class="headerlink" title="Consistency 一致性"></a>Consistency 一致性</h2><blockquote>
+<p>数据库的记录总是从一个一致性状态转变成另一个一致性状态。</p>
+<p>这里的一致性是语义上的一致性, 并不是语法上的一致性， 可以理解为需要达到用户期望的状态。</p>
+</blockquote>
+<p>比如经典的银行转账例子，若A转账200给B，则需要执行如下三步：</p>
+<ol>
+<li>检查A账户余额是否大于200</li>
+<li>从A账户减去200</li>
+<li>将B账户增加200</li>
+</ol>
+<p>用户期望的状态就是A减去200，同时B增加200。</p>
+<p>在事务的概念中，以上三个步骤必须处于同一个事务中，若不是处于同一事务中，当程序执行到3的时候系统异常了，就会导致用户的钱被扣。在真正的银行事务中，不仅需要强事务来保证一致性，而且会有一个日终对账系统，来计算每天所有的资金流向，保证整个资金流动值为0。</p>
+<p><strong>实现方式</strong>：通过回滚，恢复以及并发情况下的隔离从而实现的一致性，可以理解为其他三个特性是为了保持一致性。</p>
+<h1 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h1><p>首先介绍一下关于数据不一致的几个概念：</p>
+<ul>
+<li><strong>脏读</strong>：事务A读到了事务B未提交的数据， 此时事务A读到的数据就是一个脏数据</li>
+<li><strong>不可重复读</strong>：在同一个事务中， 前后两次相同的查询， 返回的结果不一样， 针对的是update的操作</li>
+<li><strong>幻读</strong>： 在同一个事务中，前后两次相同的查询， 返回的结果不一样， 针对的是insert和delete的操作</li>
+</ul>
+<p>隔离级别总共分为四大类（注意与上面数据不一致类型的区分）：</p>
+<ul>
+<li>未提交读</li>
+<li>提交读</li>
+<li>可重复读</li>
+<li>串行读</li>
+</ul>
+<p>针对每个隔离级别是否会出现脏读、不可重复读、幻读的情况如下：</p>
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>未提交读</td>
+<td>可能</td>
+<td>可能</td>
+<td>可能</td>
+</tr>
+<tr>
+<td>提交读</td>
+<td>不可能</td>
+<td>可能</td>
+<td>可能</td>
+</tr>
+<tr>
+<td>可重复读</td>
+<td>不可能</td>
+<td>不可能</td>
+<td>可能</td>
+</tr>
+<tr>
+<td>串行读</td>
+<td>不可能</td>
+<td>不可能</td>
+<td>不可能</td>
+</tr>
+</tbody></table>
+<h2 id="未提交读-Read-Uncommited"><a href="#未提交读-Read-Uncommited" class="headerlink" title="未提交读 Read Uncommited"></a>未提交读 Read Uncommited</h2><blockquote>
+<p>一个事务所做的修改在该事务未提交前对其他事务可见。</p>
+</blockquote>
+<p>造成的结果就是会形成脏读， 因此一般不采用。</p>
+<h2 id="提交读-Read-Commited"><a href="#提交读-Read-Commited" class="headerlink" title="提交读 Read Commited"></a>提交读 Read Commited</h2><blockquote>
+<p>只能读取到其他事务已经提交的数据。</p>
+<p>即一个事务所做的修改在该事务未提交之前对其他事务不可见。</p>
+</blockquote>
+<p>此级别能够解决脏读的问题，但是有可能会产生不可重复读的问题。</p>
+<p>Orcale默认数据隔离级别就是提交读。</p>
+<h2 id="可重复读-Repetable-Read"><a href="#可重复读-Repetable-Read" class="headerlink" title="可重复读 Repetable Read"></a>可重复读 Repetable Read</h2><blockquote>
+<p>保证在同一个事务中，两次读取到的数据是一致的。</p>
+</blockquote>
+<p>该级别能解决数据不一致中的<code>不可重复读</code>的问题，但无法解决幻读（注意此处指的是一般意义上的概念，mysql InnoDB在该级别下是不存在幻读的，具体原因见后面分析)。</p>
+<p>mysql  InnoDb引擎默认的数据库隔离级别就是可重复读。</p>
+<h2 id="串行读"><a href="#串行读" class="headerlink" title="串行读"></a>串行读</h2><p>顾名思义，所有的读操作都是串行的，这样做肯定不会存在数据一致性问题， 但无疑效率是最低的。</p>
+<h1 id="Spring中的-Transactional注意事项"><a href="#Spring中的-Transactional注意事项" class="headerlink" title="Spring中的@Transactional注意事项"></a>Spring中的@Transactional注意事项</h1><p>该注解是Spring中用来控制事务的注解，在使用时有以下几点需要注意：</p>
+<ul>
+<li>@Transactional 注解默认回滚<code>RuntimeExcepption</code>异常，注意此处即使异常被处理（即catch捕获了该类型的RuntimeException异常），Spring仍然会回滚事务</li>
+<li>@Transactional注解有一个参数rollbackFor可用来指定当自定义Exception发生时，也会进行事务回滚</li>
+<li>@Transactional注解只能作用于public方法上，虽然也能写在非public上且不会报错，但实际上是不起作用的</li>
+</ul>
+<h1 id="Spring中事务的传播级别"><a href="#Spring中事务的传播级别" class="headerlink" title="Spring中事务的传播级别"></a>Spring中事务的传播级别</h1><p>以下例子中用到的表结构：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> user1 (  </span><br><span class="line">    id <span class="type">int</span> unsigned <span class="keyword">not</span> <span class="keyword">null</span> auto increment,  </span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">32</span>) <span class="keyword">not</span> <span class="keyword">null</span>,   </span><br><span class="line">    <span class="keyword">primary</span> key(id) </span><br><span class="line">) engine<span class="operator">=</span>InnoDB;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> user2 (   </span><br><span class="line">    id <span class="type">int</span> unsigned <span class="keyword">not</span> <span class="keyword">null</span> auto increment,   </span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">32</span>) <span class="keyword">not</span> <span class="keyword">null</span>,   </span><br><span class="line">    <span class="keyword">primary</span> key(id) </span><br><span class="line">) engine<span class="operator">=</span>InnoDB</span><br></pre></td></tr></table></figure>
+
+<p>在Spring中定义的事务的传播级主要有如下几种，现就其中几个主要的说明如下</p>
+<h2 id="PROPAGATION-REQUIRED"><a href="#PROPAGATION-REQUIRED" class="headerlink" title="PROPAGATION_REQUIRED"></a>PROPAGATION_REQUIRED</h2><p><strong>按需加载。Spring默认的传播级别。</strong></p>
+<p>当上下文中已经存在事务，则加入到该事务执行。若上下文不存在事务，则新建一个事务执行。</p>
+<p>此处上下文可以理解为@Transactional注解作用的地方，当该注解作用于方法时，上下文从方法最先开始的地方开启，也就是说在刚进入方法时，首先就会开启一个事务。</p>
+<p>以下分几种情况进行说明：</p>
+<p><strong>（1）当外部方法未开启事务时, 若外部方法抛出异常, 如何运行？</strong></p>
+<p>User1Service代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User1Service</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;User1Mapper, User1Entity&gt; &#123;   </span><br><span class="line">    <span class="meta">@Resource</span>   </span><br><span class="line">    <span class="keyword">private</span> User1Mapper user1Mapper;  </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Transactional(propagation = Propagation.REQUIRED)</span>   </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addUser1</span><span class="params">(User1Entity user1Entity)</span> &#123;     </span><br><span class="line">        user1Mapper.insert(user1Entity);   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User2Service代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User2Service</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;User2Mapper, User2Entity&gt; &#123;    </span><br><span class="line">    <span class="meta">@Resource</span>   </span><br><span class="line">    <span class="keyword">private</span> User2Mapper user2Mapper;    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Transactional(propagation = Propagation.REQUIRED)</span>   </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addUser2</span><span class="params">(User2Entity user2Entity)</span> &#123;     </span><br><span class="line">        user2Mapper.insert(user2Entity);   </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">t1</span><span class="params">()</span> &#123;     </span><br><span class="line">    <span class="type">User1Entity</span> <span class="variable">user1Entity</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User1Entity</span>();     </span><br><span class="line">    user1Entity.setId(<span class="number">100</span>);     </span><br><span class="line">    user1Entity.setName(<span class="string">&quot;sju&quot;</span>);     </span><br><span class="line">    user1Service.addUser1(user1Entity);  </span><br><span class="line">    </span><br><span class="line">    <span class="type">User2Entity</span> <span class="variable">user2Entity</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User2Entity</span>();     </span><br><span class="line">    user2Entity.setId(<span class="number">200</span>);     </span><br><span class="line">    user2Entity.setName(<span class="string">&quot;fdf&quot;</span>);     </span><br><span class="line">    user2Service.addUser2(user2Entity);     </span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>();   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行结果:  user1, user2 均插入成功</p>
+<p>分析: 因为外围方法未开启事务，所以程序执行到两个addUser方法时都会开启一个新的事务，这两个事务是相互独立的,分别执行自己的逻辑，插入成功，外部方法异常不影响内部.</p>
+<p><strong>（2）当外部方法未开启事务时, 若内部方法抛出异常, 如何运行？</strong></p>
+<p>User1Service代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User1Service</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;User1Mapper, User1Entity&gt; &#123;   </span><br><span class="line">    <span class="meta">@Resource</span>   </span><br><span class="line">    <span class="keyword">private</span> User1Mapper user1Mapper;    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Transactional(propagation = Propagation.REQUIRED)</span>   </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addUser1</span><span class="params">(User1Entity user1Entity)</span> &#123;     </span><br><span class="line">        user1Mapper.insert(user1Entity);   </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User2Service代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User2Service</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;User2Mapper, User2Entity&gt; &#123;    </span><br><span class="line">    <span class="meta">@Resource</span>   </span><br><span class="line">    <span class="keyword">private</span> User2Mapper user2Mapper;    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Transactional(propagation = Propagation.REQUIRED)</span>   </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addUser2</span><span class="params">(User2Entity user2Entity)</span> &#123;     </span><br><span class="line">        user2Mapper.insert(user2Entity);     </span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>();  </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">t1</span><span class="params">()</span> &#123;     </span><br><span class="line">    <span class="type">User1Entity</span> <span class="variable">user1Entity</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User1Entity</span>();     </span><br><span class="line">    user1Entity.setId(<span class="number">100</span>);     </span><br><span class="line">    user1Entity.setName(<span class="string">&quot;sju&quot;</span>);     </span><br><span class="line">    user1Service.addUser1(user1Entity);      </span><br><span class="line">    </span><br><span class="line">    <span class="type">User2Entity</span> <span class="variable">user2Entity</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User2Entity</span>();     </span><br><span class="line">    user2Entity.setId(<span class="number">200</span>);     </span><br><span class="line">    user2Entity.setName(<span class="string">&quot;fdf&quot;</span>);     </span><br><span class="line">    user2Service.addUser2(user2Entity);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果: user1插入成功, user2插入失败</p>
+<p>分析: 还是因为外部方法未开启事务, 所以user1, user2会开启两个独立的事务, 互不影响。 所以user1插入成功, user2插入失败。</p>
+<p><strong>（3）当外部方法开启事务时, 若内部方法或者外部方法抛出异常, 如何运行？</strong></p>
+<p>User1Service和User2Service代码同之前, 只是在测试方法上也加上@Transactional注解。</p>
+<p>测试方法代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Transactional</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">t1</span><span class="params">()</span> &#123;     </span><br><span class="line">    <span class="type">User1Entity</span> <span class="variable">user1Entity</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User1Entity</span>();     </span><br><span class="line">    user1Entity.setId(<span class="number">100</span>);     </span><br><span class="line">    user1Entity.setName(<span class="string">&quot;sju&quot;</span>);     </span><br><span class="line">    user1Service.addUser1(user1Entity);      </span><br><span class="line">    </span><br><span class="line">    <span class="type">User2Entity</span> <span class="variable">user2Entity</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User2Entity</span>();     </span><br><span class="line">    user2Entity.setId(<span class="number">200</span>);     </span><br><span class="line">    user2Entity.setName(<span class="string">&quot;fdf&quot;</span>);     </span><br><span class="line">    user2Service.addUser2(user2Entity);     </span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>();   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果: user1, user2都未插入</p>
+<p>分析: 外部方法开启事务，内部两个方法都会加入到该事务中成为一个事务，外部方法回滚，则所有回滚</p>
+<h2 id="PROPAGATION-NESTED"><a href="#PROPAGATION-NESTED" class="headerlink" title="PROPAGATION_NESTED"></a>PROPAGATION_NESTED</h2><p>事务之间是嵌套的。若上下文存在事务，则嵌套执行，若不存在事务，则新建事务执行。</p>
+<p>原理：子事务是父事务的一部分，当进入子事务之前，会先在父事务建立一个回滚点save point，然后执行子事务。待子事务执行结束，再执行父事务。</p>
+<p>总结起来就是: <strong>子事务的执行不会影响父事务，但父事务的执行会影响子事务。</strong></p>
+<p>举个例子， 若methodA以PROPAGATION_REQUIRED修饰， methodB以PROPAGATION_NESTED修饰， 并且在methodA中调用methodB， 此时A为父事务， B为子事务。 其执行情况如下：</p>
+<table>
+<thead>
+<tr>
+<th>异常情况</th>
+<th>执行结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A抛异常，B正常</td>
+<td>A, B 都回滚</td>
+</tr>
+<tr>
+<td>A正常， B异常</td>
+<td>B先回滚， A再正常提交</td>
+</tr>
+<tr>
+<td>A，B都抛异常</td>
+<td>A , B 都回滚</td>
+</tr>
+</tbody></table>
+<p>问题1： 若子事务回滚，会发生什么？</p>
+<p>若子事务回滚，则父事务会回滚到之前建立的save point,然后执行其他业务逻辑，父事务之前的操作不受影响，更不会自动回滚。所以父事务不受子事务的影响。</p>
+<p>问题2：若父事务回滚，子事务会回滚吗？</p>
+<p>答：子事务会回滚</p>
+<p>问题3：子事务和父事务谁先提交？</p>
+<p>答：子事务先提交</p>
+<h2 id="PROPAGATION-SUPPORTS"><a href="#PROPAGATION-SUPPORTS" class="headerlink" title="PROPAGATION_SUPPORTS"></a>PROPAGATION_SUPPORTS</h2><p>支持当前事务，若没有当前事务，则以非事务执行</p>
+<h2 id="PROPAGATION-MANDATORY"><a href="#PROPAGATION-MANDATORY" class="headerlink" title="PROPAGATION_MANDATORY"></a>PROPAGATION_MANDATORY</h2><p>使用当前事务，注意这是强制性的（mandatory),因为当发现当前没有事务时，直接抛出异常</p>
+<h2 id="PROPAGATION-REQUIRES-NEW"><a href="#PROPAGATION-REQUIRES-NEW" class="headerlink" title="PROPAGATION_REQUIRES_NEW"></a>PROPAGATION_REQUIRES_NEW</h2><p>不管上下文中是否存在事务，每次都新建一个独立事务。</p>
+<p>若上下文中存在事务，则先会将上下文事务挂起，然后执行本方法事务，待本方法事务执行完毕之后，继续执行上下文事务。</p>
+<p>若上下文未开启事务，其行为逻辑与requires级别一致,即新建一个自己独立的事务。</p>
+<p>当外部方法开启事务时，requires_new修饰的内部方法依然会单独开启独立事务，且与外部方法的事务相互独立，内部方法之间、内部方法和外部方法的事务均相互独立，互不影响。</p>
+<h2 id="PROPAGATION-NOT-SUPPORTED"><a href="#PROPAGATION-NOT-SUPPORTED" class="headerlink" title="PROPAGATION_NOT_SUPPORTED"></a>PROPAGATION_NOT_SUPPORTED</h2><p>以非事务方式执行代码，若当前存在事务，则将当前事务挂起</p>
+<h2 id="PROPAGATION-NEVER"><a href="#PROPAGATION-NEVER" class="headerlink" title="PROPAGATION_NEVER"></a>PROPAGATION_NEVER</h2><p>以非事务执行，该处语气比上一个更强，因为当发现当前存在事务时，则直接抛出异常</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mysql/">mysql</a><a class="post-meta__tags" href="/tags/%E4%BA%8B%E5%8A%A1/">事务</a></div><div class="post_share"></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">事务的四大特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Atomicity-%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">Atomicity 原子性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Isolation-%E9%9A%94%E7%A6%BB%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">Isolation 隔离性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Durability-%E6%8C%81%E4%B9%85%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">Durability 持久性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consistency-%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-number">1.4.</span> <span class="toc-text">Consistency 一致性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">事务的隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AA%E6%8F%90%E4%BA%A4%E8%AF%BB-Read-Uncommited"><span class="toc-number">2.1.</span> <span class="toc-text">未提交读 Read Uncommited</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E8%AF%BB-Read-Commited"><span class="toc-number">2.2.</span> <span class="toc-text">提交读 Read Commited</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB-Repetable-Read"><span class="toc-number">2.3.</span> <span class="toc-text">可重复读 Repetable Read</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E8%A1%8C%E8%AF%BB"><span class="toc-number">2.4.</span> <span class="toc-text">串行读</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring%E4%B8%AD%E7%9A%84-Transactional%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">Spring中的@Transactional注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring%E4%B8%AD%E4%BA%8B%E5%8A%A1%E7%9A%84%E4%BC%A0%E6%92%AD%E7%BA%A7%E5%88%AB"><span class="toc-number">4.</span> <span class="toc-text">Spring中事务的传播级别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PROPAGATION-REQUIRED"><span class="toc-number">4.1.</span> <span class="toc-text">PROPAGATION_REQUIRED</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PROPAGATION-NESTED"><span class="toc-number">4.2.</span> <span class="toc-text">PROPAGATION_NESTED</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PROPAGATION-SUPPORTS"><span class="toc-number">4.3.</span> <span class="toc-text">PROPAGATION_SUPPORTS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PROPAGATION-MANDATORY"><span class="toc-number">4.4.</span> <span class="toc-text">PROPAGATION_MANDATORY</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PROPAGATION-REQUIRES-NEW"><span class="toc-number">4.5.</span> <span class="toc-text">PROPAGATION_REQUIRES_NEW</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PROPAGATION-NOT-SUPPORTED"><span class="toc-number">4.6.</span> <span class="toc-text">PROPAGATION_NOT_SUPPORTED</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PROPAGATION-NEVER"><span class="toc-number">4.7.</span> <span class="toc-text">PROPAGATION_NEVER</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 崔八由</div><div class="footer_custom_text">京ICP备20004941号-1 </br> <a href="https://www.foreverblog.cn/go.html" target="_blank"> <img src="https://img.foreverblog.cn/wormhole_1_tp.gif" alt="" style="width:auto;height:32px;" title="穿梭虫洞-随机访问十年之约友链博客"></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://remark.acchw.top',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    btf.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.1.2/dist/waline.min.css')
+      const { init } = await import('https://cdn.jsdelivr.net/npm/@waline/client@3.1.2/dist/waline.min.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
