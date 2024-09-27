@@ -6,7 +6,7 @@
   <link href="https://acchw.top/atom.xml" rel="self"/>
   
   <link href="https://acchw.top/"/>
-  <updated>2024-05-20T00:00:00.000Z</updated>
+  <updated>2024-09-27T00:00:00.000Z</updated>
   <id>https://acchw.top/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM中的Shallow Size 和 Retained Size解释</title>
+    <link href="https://acchw.top/posts/17167/"/>
+    <id>https://acchw.top/posts/17167/</id>
+    <published>2024-09-27T00:00:00.000Z</published>
+    <updated>2024-09-27T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在使用相关的JVM内存工具查看堆栈情况时， 有两个指标&lt;code&gt;Shallow Size&lt;/code&gt;和&lt;code&gt;Shallow</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="java" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/java/"/>
+    
+    
+    <category term="java" scheme="https://acchw.top/tags/java/"/>
+    
+    <category term="jvm" scheme="https://acchw.top/tags/jvm/"/>
+    
+  </entry>
   
   <entry>
     <title>acme.sh自动生成泛域名证书的几个坑</title>
@@ -346,7 +375,7 @@
     <link href="https://acchw.top/posts/64412/"/>
     <id>https://acchw.top/posts/64412/</id>
     <published>2023-05-01T11:10:00.000Z</published>
-    <updated>2024-09-27T14:02:05.498Z</updated>
+    <updated>2024-09-27T14:09:16.443Z</updated>
     
     
       
@@ -581,41 +610,6 @@
     <category term="java" scheme="https://acchw.top/tags/java/"/>
     
     <category term="jvm" scheme="https://acchw.top/tags/jvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jenkins使用流水线打包springboot和vue镜像</title>
-    <link href="https://acchw.top/posts/22182/"/>
-    <id>https://acchw.top/posts/22182/</id>
-    <published>2022-12-19T00:00:00.000Z</published>
-    <updated>2022-12-19T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;使用jenkins的流水线功能，可以很方便的知道各个步骤的执行进度和所用时间，还是比较方便的。&lt;/p&gt;
-&lt;p&gt;在流水线中可以使用docker进行打包， 这样就可以很方便的使用任何docker镜像，而不需要安装对应的环境。&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
-    
-    
-    <category term="docker" scheme="https://acchw.top/tags/docker/"/>
-    
-    <category term="springboot" scheme="https://acchw.top/tags/springboot/"/>
-    
-    <category term="jenkins" scheme="https://acchw.top/tags/jenkins/"/>
-    
-    <category term="vue" scheme="https://acchw.top/tags/vue/"/>
     
   </entry>
   
