@@ -54,7 +54,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-09-27 14:13:23'
+  postUpdate: '2024-11-13 02:35:34'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -206,8 +206,7 @@ PVE LXC安装tailscale此处的lxc模板使用的是Debian 11(bullseye)。
 在pve宿主机中，获取信息， 执行命令和返回结果如下, 记录 10, 200 这两个数字, 后面需要用到
 12root@pve:~# ls -al /dev/net/tuncrw-rw-rw- 1 root root 10, 200 Jun 30 23:08 /dev/net/tun
 
-在pve宿主机中，修改 /etc/pve/lxc/CTID.conf文件， 新增如下两行：其中10和200需要和第
-1 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/50851/" title="go中获取某个包下定义的所有变量">go中获取某个包下定义的所有变量</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-11T23:10:00.000Z" title="发表于 2024-01-11 23:10:00">2024-01-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/go/">go</a></span></div><div class="content">有这样一个场景， 我们在e这个包下， 有一个err_code.go文件，在其中自定义了一个错误码结构体和一些错误码，内容如下:
+在pve宿主机中，修改 /etc/pve/lxc/CTID.conf文件， 新增如下两行：其中10和200是上一步中获 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/50851/" title="go中获取某个包下定义的所有变量">go中获取某个包下定义的所有变量</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-11T23:10:00.000Z" title="发表于 2024-01-11 23:10:00">2024-01-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/go/">go</a></span></div><div class="content">有这样一个场景， 我们在e这个包下， 有一个err_code.go文件，在其中自定义了一个错误码结构体和一些错误码，内容如下:
 1234567891011package etype ErrCode struct &#123;	Code int	Msg  string&#125;var (	Success            = ErrCode&#123;Code: 10000, Msg: &quot;&quot;&#125;	UnknownErr         = ErrCode&#123;Code: 10001, Msg: &quot;未知错误&quot;&#125;	InvalidParams      = ErrCode&#123;Code: 10002, Msg: &quot;参数不合法&quot;&#125;)
 
 现在我们想获取到所有这些预先定义的错误码的code，应该如何做呢？
