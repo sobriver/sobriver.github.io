@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>Android应用在上架Google Play时封闭式测试的一些建议</title>
+      <link href="/posts/40888/"/>
+      <url>/posts/40888/</url>
+      
+        <content type="html"><![CDATA[<p>最近上架了一个自己写的App到Google Play上，其中的封闭式测试这一环节卡了很久，现在将其中的一些注意事项记录一下，方便后来人看到。当然，这个只适用于那些没有自己的测试渠道，和我一样，单纯只有自己一个人的情况下，怎样通过封闭式测试。</p><p>因为我是第一次弄这个，前后经过了二次被拒，第三次才成功通过。</p><p>这是我第一次申请失败的截图。</p><p><img src="https://pic.7billapp.com/Snipaste_2025-01-09_15-10-06.png"></p><p>Google Play对新注册的账号，如果需要发布应用，必须要有封闭式测试，且要求连续14天有20个人参与测试。</p><p>对于我这种没有自己测试渠道和测试人员的开发者，目前来看，成功率最高的是通过在reddit上发布帖子或者在别人发布的此类帖子下回帖，如此找到20个人参与测试，其中<a href="https://www.reddit.com/r/AndroidClosedTesting">https://www.reddit.com/r/AndroidClosedTesting</a> 这个板块热度较高，相对而言更容易。</p><p>首先是找人，可以在刚开始的前2天自己发帖或者回帖，凑齐20个人（可以多一点，因为中途可能会有人卸载），然后在之后的每天内都可以继续找人，还是为了防止中间有人卸载，不过之后的话就不用那么多了，每天找到几个就OK了。</p><p>还有一条是在这期间，可以发布几个版本，让Google认为你确实通过测试发现了一些问题并进行了修复，这在最后的调查问卷中可以填上去。</p><p>最后一条，对于别人发表的评价，要积极回复，也能够增加通过概率。</p><p>如果大家还有其他什么渠道或方法，也可以留言讨论。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+          <category> other </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 海外 </tag>
+            
+            <tag> Google Play </tag>
+            
+            <tag> Android </tag>
+            
+            <tag> 封闭式测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JVM中的Shallow Size 和 Retained Size解释</title>
       <link href="/posts/25621/"/>
       <url>/posts/25621/</url>
