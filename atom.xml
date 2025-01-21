@@ -6,7 +6,7 @@
   <link href="https://acchw.top/atom.xml" rel="self"/>
   
   <link href="https://acchw.top/"/>
-  <updated>2025-01-09T00:00:00.000Z</updated>
+  <updated>2025-01-21T00:00:00.000Z</updated>
   <id>https://acchw.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>还是不能太依赖自建服务</title>
+    <link href="https://acchw.top/posts/50024/"/>
+    <id>https://acchw.top/posts/50024/</id>
+    <published>2025-01-21T00:00:00.000Z</published>
+    <updated>2025-01-21T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我发现有时还是不能太依赖自建的服务，否则后续升级的时候，可能会出现一系列问题。&lt;/p&gt;
+&lt;p&gt;比如我现在用来进行流量监控与分析的是自建的umami，最近因为需要用到其中的一些新功能，需要进行升级，但是发现升级比较困难，原因是旧版本umami用的mariadb版本比较老，新的</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="self-hosted" scheme="https://acchw.top/tags/self-hosted/"/>
+    
+  </entry>
   
   <entry>
     <title>Android应用在上架Google Play时封闭式测试的一些建议</title>
@@ -408,7 +434,7 @@
     <link href="https://acchw.top/posts/64412/"/>
     <id>https://acchw.top/posts/64412/</id>
     <published>2023-05-01T11:10:00.000Z</published>
-    <updated>2025-01-21T05:50:17.551Z</updated>
+    <updated>2025-01-21T14:21:59.365Z</updated>
     
     
       
@@ -589,38 +615,6 @@
     <category term="jenkins" scheme="https://acchw.top/tags/jenkins/"/>
     
     <category term="vue" scheme="https://acchw.top/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用prometheus监控clickhouse</title>
-    <link href="https://acchw.top/posts/34295/"/>
-    <id>https://acchw.top/posts/34295/</id>
-    <published>2022-11-19T17:00:00.000Z</published>
-    <updated>2025-01-21T05:50:17.552Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;较新版本的clickhouse内部已经支持暴露监控数据给prometheus, 所以此处就不用另外部署clickhouse-exporter服务来获取监控数据。&lt;/p&gt;
-&lt;h1 id=&quot;clickhouse配置&quot;&gt;&lt;a href=&quot;#clickhouse配置&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="clickhouse" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/clickhouse/"/>
-    
-    
-    <category term="监控" scheme="https://acchw.top/tags/%E7%9B%91%E6%8E%A7/"/>
-    
-    <category term="prometheus" scheme="https://acchw.top/tags/prometheus/"/>
-    
-    <category term="clickhouse" scheme="https://acchw.top/tags/clickhouse/"/>
     
   </entry>
   
