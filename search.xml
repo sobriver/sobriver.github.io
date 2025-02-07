@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>记录一下使用vercel搭建umami中需要注意的地方</title>
+      <link href="/posts/1106/"/>
+      <url>/posts/1106/</url>
+      
+        <content type="html"><![CDATA[<p>在使用vercel搭建umami的时候，步骤比较简单，直接使用官网的deploy按钮，一步一步来就行。</p><p>其中有一个点需要注意，在填写环境变量DATABASE_URL的时候，按照官网说明，对于umami应该使用的是POSTGRES_PRISMA_URL，但此时如果直接使用POSTGRES_PRISMA_URL，在deploy的时候，连接数据库会报错，报错信息如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prepared statement &quot;s0&quot; does not exist</span><br></pre></td></tr></table></figure><p>看到supabase下面有这句话，对于umami使用的是prepared statements。</p><p><img src="https://pic.7billapp.com/Snipaste_2025-02-07_15-32-40.png"></p><p>所以不能使用默认的6432端口， 改成5432端口就可以了。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">postgres://xxx@xxxxx:5432/postgres?sslmode=require&amp;supa=base-pooler.x?pgbouncer=true&amp;connect_timeout=10</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 折腾 </category>
+          
+          <category> 博客 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> 博客 </tag>
+            
+            <tag> umami </tag>
+            
+            <tag> vercel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>还是不能太依赖自建服务</title>
       <link href="/posts/50024/"/>
       <url>/posts/50024/</url>

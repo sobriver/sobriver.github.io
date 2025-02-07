@@ -6,7 +6,7 @@
   <link href="https://acchw.top/atom.xml" rel="self"/>
   
   <link href="https://acchw.top/"/>
-  <updated>2025-01-21T00:00:00.000Z</updated>
+  <updated>2025-02-07T00:00:00.000Z</updated>
   <id>https://acchw.top/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录一下使用vercel搭建umami中需要注意的地方</title>
+    <link href="https://acchw.top/posts/1106/"/>
+    <id>https://acchw.top/posts/1106/</id>
+    <published>2025-02-07T00:00:00.000Z</published>
+    <updated>2025-02-07T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在使用vercel搭建umami的时候，步骤比较简单，直接使用官网的deploy按钮，一步一步来就行。&lt;/p&gt;
+&lt;p&gt;其中有一个点需要注意，在填写环境变量DATABASE_URL的时候，按照官网说明，对于umami应该使用的是POSTGRES_PRISMA_URL，但此时如</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="博客" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="博客" scheme="https://acchw.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="umami" scheme="https://acchw.top/tags/umami/"/>
+    
+    <category term="vercel" scheme="https://acchw.top/tags/vercel/"/>
+    
+  </entry>
   
   <entry>
     <title>还是不能太依赖自建服务</title>
@@ -434,7 +468,7 @@
     <link href="https://acchw.top/posts/64412/"/>
     <id>https://acchw.top/posts/64412/</id>
     <published>2023-05-01T11:10:00.000Z</published>
-    <updated>2025-02-07T07:08:30.993Z</updated>
+    <updated>2025-02-07T07:42:10.341Z</updated>
     
     
       
@@ -580,41 +614,6 @@
     <category term="java" scheme="https://acchw.top/tags/java/"/>
     
     <category term="jvm" scheme="https://acchw.top/tags/jvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jenkins使用流水线打包springboot和vue镜像</title>
-    <link href="https://acchw.top/posts/22182/"/>
-    <id>https://acchw.top/posts/22182/</id>
-    <published>2022-12-19T00:00:00.000Z</published>
-    <updated>2022-12-19T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;使用jenkins的流水线功能，可以很方便的知道各个步骤的执行进度和所用时间，还是比较方便的。&lt;/p&gt;
-&lt;p&gt;在流水线中可以使用docker进行打包， 这样就可以很方便的使用任何docker镜像，而不需要安装对应的环境。&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
-    
-    
-    <category term="docker" scheme="https://acchw.top/tags/docker/"/>
-    
-    <category term="springboot" scheme="https://acchw.top/tags/springboot/"/>
-    
-    <category term="jenkins" scheme="https://acchw.top/tags/jenkins/"/>
-    
-    <category term="vue" scheme="https://acchw.top/tags/vue/"/>
     
   </entry>
   
