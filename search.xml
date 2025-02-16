@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>解决macos sierra重新安装时报错-准备安装时发生错误</title>
+      <link href="/posts/49721/"/>
+      <url>/posts/49721/</url>
+      
+        <content type="html"><![CDATA[<p>最近打算把之前的一个旧的苹果笔记本出售，型号是2015 macbook air，因为出售之前需要把系统整个清理干净，所以按照苹果官方的建议，先将磁盘抹掉，然后重新安装。</p><p>选择重新安装的时候使用了这个笔记本最刚开始的版本<code>macos sierra</code>（没得选择，只有这个选项），但是安装到最后几秒的时候，报错“准备安装时发生错误”，试了好几次，中途使用了网上说的网络时间错误、APFS等措施，还是不行。</p><p>最后想到了一个可能，因为我这个笔记本中途升级到了Monterey，现在这样直接降级安装可能有问题，那如果安装这个Monterey版本是不是可行？</p><p>最终证明是可行的，也不用U盘等进行安装，具体操作步骤如下：</p><ol><li>开机的时候按<code>Command+Option+R</code>进入网络恢复模式（注意千万不要使用<code>Command+R</code>那种方式进入，在这种恢复模式下只能安装sierra）</li><li>这个时候我们就能看到屏幕上有”重新安装macos Monterey” 选项， 此时如果直接进入安装，会发现没有磁盘。所以应该先进入磁盘工具，抹掉内置磁盘，格式选择APFS</li><li>点击菜单栏的退出磁盘工具，回到刚开始页面，此时再选择”重新安装macos Monterey” 选项，进行macos的安装，后面直接按流程来就行了。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 折腾 </category>
+          
+          <category> 其他 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> macos </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>记录一下使用vercel搭建umami中需要注意的地方</title>
       <link href="/posts/1106/"/>
       <url>/posts/1106/</url>

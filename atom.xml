@@ -6,7 +6,7 @@
   <link href="https://acchw.top/atom.xml" rel="self"/>
   
   <link href="https://acchw.top/"/>
-  <updated>2025-02-07T00:00:00.000Z</updated>
+  <updated>2025-02-16T00:00:00.000Z</updated>
   <id>https://acchw.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决macos sierra重新安装时报错-准备安装时发生错误</title>
+    <link href="https://acchw.top/posts/49721/"/>
+    <id>https://acchw.top/posts/49721/</id>
+    <published>2025-02-16T00:00:00.000Z</published>
+    <updated>2025-02-16T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近打算把之前的一个旧的苹果笔记本出售，型号是2015 macbook air，因为出售之前需要把系统整个清理干净，所以按照苹果官方的建议，先将磁盘抹掉，然后重新安装。&lt;/p&gt;
+&lt;p&gt;选择重新安装的时候使用了这个笔记本最刚开始的版本&lt;code&gt;macos</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
+    
+    
+    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="macos" scheme="https://acchw.top/tags/macos/"/>
+    
+  </entry>
   
   <entry>
     <title>记录一下使用vercel搭建umami中需要注意的地方</title>
@@ -468,7 +498,7 @@
     <link href="https://acchw.top/posts/64412/"/>
     <id>https://acchw.top/posts/64412/</id>
     <published>2023-05-01T11:10:00.000Z</published>
-    <updated>2025-02-07T07:42:10.341Z</updated>
+    <updated>2025-02-16T11:34:17.942Z</updated>
     
     
       
@@ -584,36 +614,6 @@
     
     
     <category term="selfhost" scheme="https://acchw.top/tags/selfhost/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM内存分配机制介绍</title>
-    <link href="https://acchw.top/posts/17167/"/>
-    <id>https://acchw.top/posts/17167/</id>
-    <published>2023-01-15T21:00:00.000Z</published>
-    <updated>2024-11-13T10:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;本文针对的是hotspot虚拟机， jdk版本1.8的虚拟机进行介绍。&lt;/p&gt;
-&lt;h1 id=&quot;程序计数器&quot;&gt;&lt;a href=&quot;#程序计数器&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="java" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/java/"/>
-    
-    
-    <category term="java" scheme="https://acchw.top/tags/java/"/>
-    
-    <category term="jvm" scheme="https://acchw.top/tags/jvm/"/>
     
   </entry>
   
