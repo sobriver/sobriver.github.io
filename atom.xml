@@ -297,7 +297,7 @@
     <link href="https://acchw.top/posts/3940/"/>
     <id>https://acchw.top/posts/3940/</id>
     <published>2024-01-18T00:00:00.000Z</published>
-    <updated>2024-01-21T00:00:00.000Z</updated>
+    <updated>2025-02-24T00:00:00.000Z</updated>
     
     
       
@@ -307,7 +307,7 @@
     <summary type="html">&lt;p&gt;先说一下整体的环境和安装方式&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;pve虚拟机专门开了一个lxc容器，用于安装tailscale，并利用此容器转发流量到局域网内的其他机器上，实现外部访问内网所有机器&lt;/li&gt;
-&lt;li&gt;由于tailscale本身的中转服务器derp没有中国的节点，最近</summary>
+&lt;li&gt;由于tailscale本身的中转服务器derp没有中国的节点，测试</summary>
         
       
     
@@ -498,16 +498,16 @@
     <link href="https://acchw.top/posts/64412/"/>
     <id>https://acchw.top/posts/64412/</id>
     <published>2023-05-01T11:10:00.000Z</published>
-    <updated>2025-02-23T08:32:10.527Z</updated>
+    <updated>2025-02-24T11:33:01.097Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;最近ac2100刷的openwrt，想换回pandavan，使用如下方法无法进入breed的web页面：&lt;/p&gt;
+    <summary type="html">&lt;p&gt;之前的红米路由器AC2100刷的是openwrt，想换回pandavan，使用如下方法无法进入breed的web页面：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;先断电，然后找个针戳住路由器背后 Reset 小孔并插电，等路由器蓝灯一直闪烁后，浏览器输入 192.168.1.1，即可进入</summary>
+&lt;p&gt;先断电，然后找个针戳住路由器背后 Reset 小孔并插电，等路由器蓝灯一直闪烁后，浏览器输入</summary>
         
       
     

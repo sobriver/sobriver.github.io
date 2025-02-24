@@ -58,7 +58,7 @@ gtag('config', 'G-DY0XM593FN');
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2025-02-23 08:32:39'
+  postUpdate: '2025-02-24 11:33:29'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -305,16 +305,16 @@ n&lt;&#x3D;m, 匹配至少n次,至多m次
 前后总共持续4天左右， 除了头疼和发烧， 其他的症状到还好， 但是这个头疼真的很难受，是既不能睡又不能不睡。
 之前疫情三年一直都没阳过， 包括最后解封的时候， 我周边的同事都阳了， 就只有我没阳， 还以为自己体质很好（其实我的体质确实感觉还行， 已经有七八年没去过医院，吃过药了，最近的一次生病我记的应该是高中的时候吃东西吃坏肚子）。
 但最终还是没躲过去。
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/64412/" title="红米AC2100 openwrt下无法进入breed">红米AC2100 openwrt下无法进入breed</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-01T11:10:00.000Z" title="发表于 2023-05-01 11:10:00">2023-05-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/">其他</a></span></div><div class="content">最近ac2100刷的openwrt，想换回pandavan，使用如下方法无法进入breed的web页面：
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/64412/" title="红米AC2100 openwrt下无法进入breed">红米AC2100 openwrt下无法进入breed</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-01T11:10:00.000Z" title="发表于 2023-05-01 11:10:00">2023-05-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%98%E8%85%BE/">折腾</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/">其他</a></span></div><div class="content">之前的红米路由器AC2100刷的是openwrt，想换回pandavan，使用如下方法无法进入breed的web页面：
 
 先断电，然后找个针戳住路由器背后 Reset 小孔并插电，等路由器蓝灯一直闪烁后，浏览器输入 192.168.1.1，即可进入 breed 网页。
 
-路由器的system一直闪黄灯，突然想到之前刷openwrt的时候， 刷入了官方的bootloader， 所以自然无法进入。下面介绍一下在openwrt的系统下，如何刷breed的bootloader。
+现象是路由器的system一直闪黄灯，突然想到之前刷openwrt的时候， 刷入了官方的bootloader， 所以自然无法进入。下面介绍一下在openwrt的系统下，如何刷breed的bootloader。
 在openwrt的web页面，将breed的固件breed-mt7621-xiaomi-r3g.bin上传到&#x2F;tmp路径下（其他路径也可以），然后ssh进入路由器命令行， 执行 如下命令：
 12cd /tmpmtd_write -r write breed-mt7621-xiaomi-r3g.bin Bootloader
 
 之后重启路由器， 登录192.168.1.1就ok了。
-有一个注意点，openwrt下ssh的用户名和密码， 网上找了半天都没找到， 所以一直无法登录，后来发现我装的这个openwrt上面已经集成了ss ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/61959/" title="从alpine编译nginx的docker镜像">从alpine编译nginx的docker镜像</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-28T00:00:00.000Z" title="发表于 2023-03-28 00:00:00">2023-03-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/other/">other</a></span></div><div class="content">因为需要接入nginx监控，用的是vts模块，原生nginx并没有包含该模块，原本想着用别人已经编译好的， 但是一想后期可能还需要加入其他的模块，所以还是自己编译一个。
+上面的操作有一点需要注意，openwrt下ssh的默认用户名和密码， 网上找了半天都没找到（如果有人知道，可以留言告诉我一下） ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/61959/" title="从alpine编译nginx的docker镜像">从alpine编译nginx的docker镜像</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-28T00:00:00.000Z" title="发表于 2023-03-28 00:00:00">2023-03-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B/other/">other</a></span></div><div class="content">因为需要接入nginx监控，用的是vts模块，原生nginx并没有包含该模块，原本想着用别人已经编译好的， 但是一想后期可能还需要加入其他的模块，所以还是自己编译一个。
 下面说一下具体的步骤。
 编写dockerfile文件此处用的几个主要软件版本：
 
