@@ -20,6 +20,15 @@
   </url>
   
   <url>
+    <loc>https://acchw.top/about/index.html</loc>
+    
+    <lastmod>2025-02-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://acchw.top/board/index.html</loc>
     
     <lastmod>2025-02-24</lastmod>
@@ -30,15 +39,6 @@
   
   <url>
     <loc>https://acchw.top/categories/index.html</loc>
-    
-    <lastmod>2025-02-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://acchw.top/about/index.html</loc>
     
     <lastmod>2025-02-24</lastmod>
     
@@ -621,13 +621,6 @@
   </url>
   
   <url>
-    <loc>https://acchw.top/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/</loc>
-    <lastmod>2025-02-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://acchw.top/tags/linux/</loc>
     <lastmod>2025-02-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -643,6 +636,13 @@
   
   <url>
     <loc>https://acchw.top/tags/prometheus/</loc>
+    <lastmod>2025-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://acchw.top/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/</loc>
     <lastmod>2025-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -910,14 +910,14 @@
   </url>
   
   <url>
-    <loc>https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E6%A0%91%E8%8E%93%E6%B4%BE/</loc>
+    <loc>https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E7%9B%91%E6%8E%A7/</loc>
     <lastmod>2025-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E7%9B%91%E6%8E%A7/</loc>
+    <loc>https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E6%A0%91%E8%8E%93%E6%B4%BE/</loc>
     <lastmod>2025-02-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
