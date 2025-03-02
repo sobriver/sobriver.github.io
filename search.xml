@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>pve lxc容器使用vnpy的问题</title>
+      <link href="/posts/27377/"/>
+      <url>/posts/27377/</url>
+      
+        <content type="html"><![CDATA[<p>最近在网上找较近时间的一些期货1分钟K线数据，发现基本上都是需要付费的，所以想着自己去录制行情数据。</p><p>录制这一块使用了vnpy。vnpy本身支持行情录制，但是有两个问题不符合我现在的需求，需要解决：</p><ol><li>需要手动指定合约名称，而我的需求是录制全市场行情</li><li>无法录制主力合约</li></ol><p>所以在网上找到了一个全市场行情录制的脚本, 修改了部分进行优化，同时对于主力合约，每天自己在后台合成。资源占用方面比较少（我这儿只录制了bar数据，没有录制tick数据，如果要录tick的话，所需的系统资源应该就更多了 )。</p><p>刚开始调试的时候，是在windows上运行的，没有问题，但是当我将脚本放到使用pve创建的lxc容器中（容器模板是ubuntu 22.04)，不知道为啥，CTP一直在报连接成功，然后再连接断开，也没有更详细的报错日志。猜测可能是lxc，抱着尝试的心态新创建了一个ubuntu 22.04的虚拟机， 果然成功了。</p><p>至于为啥lxc不行， 暂时还不知晓，写此文章仅记录一下。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理财 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> pve </tag>
+            
+            <tag> vnpy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>扔垃圾的感受</title>
+      <link href="/posts/46394/"/>
+      <url>/posts/46394/</url>
+      
+        <content type="html"><![CDATA[<p>今天去扔垃圾，</p><p>突然发现将垃圾扔出去的时候，</p><p>心里有一种莫名的快感。</p><p>为什么呢？</p><p>可能是将不要的东西丢掉，是对过去的一种告别（☺瞎矫情☺）。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生活 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>解决macos sierra重新安装时报错-准备安装时发生错误</title>
       <link href="/posts/49721/"/>
       <url>/posts/49721/</url>
@@ -287,9 +339,9 @@
       
         <tags>
             
-            <tag> tailscale </tag>
-            
             <tag> pve </tag>
+            
+            <tag> tailscale </tag>
             
         </tags>
       

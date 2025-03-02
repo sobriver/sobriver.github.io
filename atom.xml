@@ -6,7 +6,7 @@
   <link href="https://acchw.top/atom.xml" rel="self"/>
   
   <link href="https://acchw.top/"/>
-  <updated>2025-02-16T00:00:00.000Z</updated>
+  <updated>2025-03-02T13:10:44.776Z</updated>
   <id>https://acchw.top/</id>
   
   <author>
@@ -15,6 +15,66 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pve lxc容器使用vnpy的问题</title>
+    <link href="https://acchw.top/posts/27377/"/>
+    <id>https://acchw.top/posts/27377/</id>
+    <published>2025-03-02T21:00:00.000Z</published>
+    <updated>2025-03-02T13:10:44.776Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近在网上找较近时间的一些期货1分钟K线数据，发现基本上都是需要付费的，所以想着自己去录制行情数据。&lt;/p&gt;
+&lt;p&gt;录制这一块使用了vnpy。vnpy本身支持行情录制，但是有两个问题不符合我现在的需求，需要解决：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;需要手动指定合约名称，而我的需求是</summary>
+        
+      
+    
+    
+    
+    <category term="理财" scheme="https://acchw.top/categories/%E7%90%86%E8%B4%A2/"/>
+    
+    
+    <category term="pve" scheme="https://acchw.top/tags/pve/"/>
+    
+    <category term="vnpy" scheme="https://acchw.top/tags/vnpy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>扔垃圾的感受</title>
+    <link href="https://acchw.top/posts/46394/"/>
+    <id>https://acchw.top/posts/46394/</id>
+    <published>2025-03-02T00:00:00.000Z</published>
+    <updated>2025-03-02T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今天去扔垃圾，&lt;/p&gt;
+&lt;p&gt;突然发现将垃圾扔出去的时候，&lt;/p&gt;
+&lt;p&gt;心里有一种莫名的快感。&lt;/p&gt;
+&lt;p&gt;为什么呢？&lt;/p&gt;
+&lt;p&gt;可能是将不要的东西丢掉，是对过去的一种告别（☺瞎矫情☺）。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="生活" scheme="https://acchw.top/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>解决macos sierra重新安装时报错-准备安装时发生错误</title>
@@ -318,9 +378,9 @@
     <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="tailscale" scheme="https://acchw.top/tags/tailscale/"/>
-    
     <category term="pve" scheme="https://acchw.top/tags/pve/"/>
+    
+    <category term="tailscale" scheme="https://acchw.top/tags/tailscale/"/>
     
   </entry>
   
@@ -498,7 +558,7 @@
     <link href="https://acchw.top/posts/64412/"/>
     <id>https://acchw.top/posts/64412/</id>
     <published>2023-05-01T11:10:00.000Z</published>
-    <updated>2025-02-24T11:49:32.067Z</updated>
+    <updated>2025-03-02T13:10:44.776Z</updated>
     
     
       
@@ -554,66 +614,6 @@
     <category term="nginx" scheme="https://acchw.top/tags/nginx/"/>
     
     <category term="docker - jenkins" scheme="https://acchw.top/tags/docker-jenkins/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo主题使用css添加网格背景</title>
-    <link href="https://acchw.top/posts/65472/"/>
-    <id>https://acchw.top/posts/65472/</id>
-    <published>2023-02-08T00:00:00.000Z</published>
-    <updated>2023-02-08T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;给hexo的博客添加一个网格背景， 此处不想使用图片， 而是直接使用css来实现，效果图如下：&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    <category term="博客" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
-    
-    <category term="博客" scheme="https://acchw.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-    <category term="hexo" scheme="https://acchw.top/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>live555搭建流视频服务播放视频文件</title>
-    <link href="https://acchw.top/posts/16866/"/>
-    <id>https://acchw.top/posts/16866/</id>
-    <published>2023-01-16T14:00:00.000Z</published>
-    <updated>2023-01-16T14:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;为了方便，使用docker搭建，用的是docker hub上使用人数最多的一个镜像， &lt;code&gt;docker-compose.yml&lt;/code&gt;文件内容如下所示：&lt;/p&gt;
-&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
-    
-    
-    <category term="selfhost" scheme="https://acchw.top/tags/selfhost/"/>
     
   </entry>
   
