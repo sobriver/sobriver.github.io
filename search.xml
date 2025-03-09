@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>最终还是投向了obsidian</title>
+      <link href="/posts/33335/"/>
+      <url>/posts/33335/</url>
+      
+        <content type="html"><![CDATA[<p>之前写过一篇文章，讲述了一些<a href="https://acchw.top/posts/18945/">笔记软件的选择</a>, 当时主力使用的是思源笔记，同时为了解决多端同步的问题，我是将思源直接部署在了vps上，通过网页进行访问，这样间接实现了数据同步的问题。</p><p>但是用了许久下来，发现了一些问题，而最终是这些问题，导致我放弃了思源笔记。</p><p>对于我而言，最主要的几个问题如下：</p><ul><li>因为是部署在vps上的，一直担心哪天我的vps不续费了后续笔记就都丢失了（虽然做了备份，但是vps过期之后就无法公网访问了）</li><li>思源笔记更新太频繁，中间升级的过程会有一定的风险。依稀记的中间有一次为了使用它的一个新功能，将思源笔记进行了升级， 升级完之后，其中有几篇笔记的排版出现了错乱，不得已只能手工重新编辑。这次还好只是样式出现了问题，要是数据丢失了，那就真不知道去哪儿哭了。</li></ul><p>所以，最终我还是选择了obsidian。选择obsidian是因为其本身存储就是一个markdown文件，这样只要该文件存在，即使后期obsidian不维护，仍然可以使用。而且obsidian在我看来，只要不折腾，其实还是非常简单且易于使用的。</p><p>同时，将思源笔记内容迁移到obsidian的过程，也是一个知识收纳与整理的过程。</p><p>对于obsidian，我现在主要用到的几个插件（本着不折腾的缘故，尽量少装插件）：</p><ul><li>Remotely Save 数据同步，我是同步到阿里云oss</li><li>Kanban  看板工具，这个我主要是用来做一些简单的项目管理，已经足够了</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 折腾 </category>
+          
+          <category> 其他 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> obsidian </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>pve lxc容器使用vnpy的问题</title>
       <link href="/posts/27377/"/>
       <url>/posts/27377/</url>
