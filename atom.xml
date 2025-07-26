@@ -6,7 +6,7 @@
   <link href="https://acchw.top/atom.xml" rel="self"/>
   
   <link href="https://acchw.top/"/>
-  <updated>2025-07-14T10:00:00.000Z</updated>
+  <updated>2025-07-26T15:00:00.000Z</updated>
   <id>https://acchw.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第一次装机过程与记录</title>
+    <link href="https://acchw.top/posts/54175/"/>
+    <id>https://acchw.top/posts/54175/</id>
+    <published>2025-07-26T15:00:00.000Z</published>
+    <updated>2025-07-26T15:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;6月30号下的所有硬件单，7月1号就已经装好了，本来不想写的，但是想着最好还是记录一下，以便日后查看。&lt;/p&gt;
+&lt;p&gt;装机的配置清单是在蹲了几天的图吧和知乎，并结合微信小程序的装机助手里面别人的配置定下来的，总体还是有点超预算了。&lt;/p&gt;
+&lt;p&gt;因为是第一次装机，怕买到残次</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
+    
+    
+    <category term="装机" scheme="https://acchw.top/tags/%E8%A3%85%E6%9C%BA/"/>
+    
+    <category term="硬件" scheme="https://acchw.top/tags/%E7%A1%AC%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>记录一下今年治牙的过程</title>
@@ -46,7 +77,7 @@
     <link href="https://acchw.top/posts/40045/"/>
     <id>https://acchw.top/posts/40045/</id>
     <published>2025-04-04T00:00:00.000Z</published>
-    <updated>2025-07-26T01:39:49.789Z</updated>
+    <updated>2025-07-26T07:07:06.036Z</updated>
     
     
       
@@ -102,7 +133,7 @@
     <link href="https://acchw.top/posts/27377/"/>
     <id>https://acchw.top/posts/27377/</id>
     <published>2025-03-02T21:00:00.000Z</published>
-    <updated>2025-07-26T01:39:49.789Z</updated>
+    <updated>2025-07-26T07:07:06.036Z</updated>
     
     
       
@@ -578,33 +609,6 @@
     <category term="mysql" scheme="https://acchw.top/tags/mysql/"/>
     
     <category term="事务" scheme="https://acchw.top/tags/%E4%BA%8B%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用正则表达式总结</title>
-    <link href="https://acchw.top/posts/24604/"/>
-    <id>https://acchw.top/posts/24604/</id>
-    <published>2023-05-24T00:00:00.000Z</published>
-    <updated>2023-05-24T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h4 id=&quot;正则表达式语法&quot;&gt;&lt;a href=&quot;#正则表达式语法&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
-    
-    
-    <category term="正则" scheme="https://acchw.top/tags/%E6%AD%A3%E5%88%99/"/>
     
   </entry>
   
