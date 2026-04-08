@@ -6,7 +6,7 @@
   <link href="https://acchw.top/atom.xml" rel="self"/>
   
   <link href="https://acchw.top/"/>
-  <updated>2026-04-07T15:00:00.000Z</updated>
+  <updated>2025-07-26T15:00:00.000Z</updated>
   <id>https://acchw.top/</id>
   
   <author>
@@ -15,37 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>凸(艹皿艹 ) 推特被封了</title>
-    <link href="https://acchw.top/posts/48182/"/>
-    <id>https://acchw.top/posts/48182/</id>
-    <published>2026-04-07T15:00:00.000Z</published>
-    <updated>2026-04-07T15:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;操， 推特被封了。&lt;/p&gt;
-&lt;p&gt;这个账号很早就注册了，大概是2016年，之后一直没怎么用，中间基本上都是浏览，很少发帖。&lt;/p&gt;
-&lt;p&gt;最近捡起了这个账号，并开通了蓝V，</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
-    
-    
-    <category term="推特" scheme="https://acchw.top/tags/%E6%8E%A8%E7%89%B9/"/>
-    
-    <category term="X" scheme="https://acchw.top/tags/X/"/>
-    
-  </entry>
   
   <entry>
     <title>第一次装机过程与记录</title>
@@ -59,9 +28,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;6月30号下的所有硬件单，7月1号就已经装好了，本来不想写的，但是想着最好还是记录一下，以便日后查看。&lt;/p&gt;
-&lt;p&gt;装机的配置清单是在蹲了几天的图吧和知乎，并结合微信小程序的装机助手里面别人的配置定下来的，总体还是有点超预算了。&lt;/p&gt;
-&lt;p&gt;因为是第一次装机，怕买到残次</summary>
+    <summary type="html">&lt;p&gt;6�?0号下的所有硬件单�?�?号就已经装好了，本来不想写的，但是想着最好还是记录一下，以便日后查看�?&lt;br&gt;装机的配置清单是在蹲了几天的图吧和知乎，并结合微信小程序的装机助手里面别人的配置定下来的，总体还是有点超预算了�?&lt;br&gt;因为是第一次装机，怕买到残次品点不亮，所</summary>
         
       
     
@@ -90,7 +57,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;今年对牙齿做了多次治疗，记录一下治疗过程。&lt;br&gt;2月份的时候，口腔半边很疼，怀疑是牙的问题（其实去年也出现过一次，但是当时疼了没多长时间就好了，所以没怎么关心），所以去了一趟医院，拍了一下片子，医生诊断是左上部分的智齿坏了，并且已经触及到神经，所以很疼。因为是智齿，拔掉也</summary>
+    <summary type="html">&lt;p&gt;今年对牙齿做了多次治疗，记录一下治疗过程�?2月份的时候，口腔半边很疼，怀疑是牙的问题（其实去年也出现过一次，但是当时疼了没多长时间就好了，所以没怎么关心），所以去了一趟医院，拍了一下片子，医生诊断是左上部分的智齿坏了，并且已经触及到神经，所以很疼。因为是智齿，拔掉也没影响</summary>
         
       
     
@@ -160,36 +127,6 @@
   </entry>
   
   <entry>
-    <title>pve lxc容器使用vnpy的问题</title>
-    <link href="https://acchw.top/posts/27377/"/>
-    <id>https://acchw.top/posts/27377/</id>
-    <published>2025-03-02T21:00:00.000Z</published>
-    <updated>2025-03-02T21:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近在网上找较近时间的一些期货1分钟K线数据，发现基本上都是需要付费的，所以想着自己去录制行情数据。&lt;/p&gt;
-&lt;p&gt;录制这一块使用了vnpy。vnpy本身支持行情录制，但是有两个问题不符合我现在的需求，需要解决：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;需要手动指定合约名称，而我的需求是</summary>
-        
-      
-    
-    
-    
-    <category term="理财" scheme="https://acchw.top/categories/%E7%90%86%E8%B4%A2/"/>
-    
-    
-    <category term="pve" scheme="https://acchw.top/tags/pve/"/>
-    
-    <category term="vnpy" scheme="https://acchw.top/tags/vnpy/"/>
-    
-  </entry>
-  
-  <entry>
     <title>扔垃圾的感受</title>
     <link href="https://acchw.top/posts/46394/"/>
     <id>https://acchw.top/posts/46394/</id>
@@ -201,11 +138,8 @@
       
         
         
-    <summary type="html">&lt;p&gt;今天去扔垃圾，&lt;/p&gt;
-&lt;p&gt;突然发现将垃圾扔出去的时候，&lt;/p&gt;
-&lt;p&gt;心里有一种莫名的快感。&lt;/p&gt;
-&lt;p&gt;为什么呢？&lt;/p&gt;
-&lt;p&gt;可能是将不要的东西丢掉，是对过去的一种告别（☺瞎矫情☺）。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;今天去扔垃圾�?&lt;br&gt;突然发现将垃圾扔出去的时候，&lt;/p&gt;
+&lt;p&gt;心里有一种莫名的快感�?&lt;br&gt;为什么呢�?&lt;br&gt;可能是将不要的东西丢掉，是对过去的一种告别（☺瞎矫情☺）�?&lt;/p&gt;
 </summary>
         
       
@@ -216,36 +150,6 @@
     
     
     <category term="生活" scheme="https://acchw.top/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决macos sierra重新安装时报错-准备安装时发生错误</title>
-    <link href="https://acchw.top/posts/49721/"/>
-    <id>https://acchw.top/posts/49721/</id>
-    <published>2025-02-16T00:00:00.000Z</published>
-    <updated>2025-02-16T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近打算把之前的一个旧的苹果笔记本出售，型号是2015 macbook air，因为出售之前需要把系统整个清理干净，所以按照苹果官方的建议，先将磁盘抹掉，然后重新安装。&lt;/p&gt;
-&lt;p&gt;选择重新安装的时候使用了这个笔记本最刚开始的版本&lt;code&gt;macos</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
-    
-    
-    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
-    
-    <category term="macos" scheme="https://acchw.top/tags/macos/"/>
     
   </entry>
   
@@ -261,8 +165,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;在使用vercel搭建umami的时候，步骤比较简单，直接使用官网的deploy按钮，一步一步来就行。&lt;/p&gt;
-&lt;p&gt;其中有一个点需要注意，在填写环境变量DATABASE_URL的时候，按照官网说明，对于umami应该使用的是POSTGRES_PRISMA_URL，但此时如</summary>
+    <summary type="html">&lt;p&gt;在使用vercel搭建umami的时候，步骤比较简单，直接使用官网的deploy按钮，一步一步来就行�?&lt;br&gt;其中有一个点需要注意，在填写环境变量DATABASE_URL的时候，按照官网说明，对于umami应该使用的是POSTGRES_PRISMA_URL，但此时如果直接</summary>
         
       
     
@@ -273,9 +176,9 @@
     <category term="博客" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%8D%9A%E5%AE%A2/"/>
     
     
-    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="博客" scheme="https://acchw.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
     
     <category term="umami" scheme="https://acchw.top/tags/umami/"/>
     
@@ -310,40 +213,7 @@
   </entry>
   
   <entry>
-    <title>Android应用在上架Google Play时封闭式测试的一些建议</title>
-    <link href="https://acchw.top/posts/40888/"/>
-    <id>https://acchw.top/posts/40888/</id>
-    <published>2025-01-09T00:00:00.000Z</published>
-    <updated>2025-01-09T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近上架了一个自己写的App到Google</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
-    
-    
-    <category term="海外" scheme="https://acchw.top/tags/%E6%B5%B7%E5%A4%96/"/>
-    
-    <category term="Google Play" scheme="https://acchw.top/tags/Google-Play/"/>
-    
-    <category term="Android" scheme="https://acchw.top/tags/Android/"/>
-    
-    <category term="封闭式测试" scheme="https://acchw.top/tags/%E5%B0%81%E9%97%AD%E5%BC%8F%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM中的Shallow Size 和 Retained Size解释</title>
+    <title>JVM中的Shallow Size �?Retained Size解释</title>
     <link href="https://acchw.top/posts/25621/"/>
     <id>https://acchw.top/posts/25621/</id>
     <published>2024-09-27T00:00:00.000Z</published>
@@ -368,43 +238,6 @@
     <category term="java" scheme="https://acchw.top/tags/java/"/>
     
     <category term="jvm" scheme="https://acchw.top/tags/jvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>acme.sh自动生成泛域名证书的几个坑</title>
-    <link href="https://acchw.top/posts/16115/"/>
-    <id>https://acchw.top/posts/16115/</id>
-    <published>2024-05-20T00:00:00.000Z</published>
-    <updated>2024-05-20T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;先说一下我的环境与配置：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;域名：在namesilo上购买的&lt;/li&gt;
-&lt;li&gt;证书使用方式：nginx&lt;/li&gt;
-&lt;li&gt;nginx部署方式：docker&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;说一下在使用过程中可能会遇到的一些坑，</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
-    
-    
-    <category term="acme.sh" scheme="https://acchw.top/tags/acme-sh/"/>
-    
-    <category term="证书" scheme="https://acchw.top/tags/%E8%AF%81%E4%B9%A6/"/>
-    
-    <category term="namesilo" scheme="https://acchw.top/tags/namesilo/"/>
     
   </entry>
   
@@ -474,7 +307,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;pve中一块nvme磁盘最近偶尔会报温度过高， 所以需要加个监控， 之前已经装过node_expoter, 但是其磁盘硬件监控这一块的信息不够全面，其更多强调的是磁盘的性能，比如IO等。 温度监控这一块也有， 但是不够直观明显，而且缺少其他的一些磁盘硬件本身的信息，</summary>
+    <summary type="html">&lt;p&gt;pve中一块nvme磁盘最近偶尔会报温度过高， 所以需要加个监控， 之前已经装过node_expoter, 但是其磁盘硬件监控这一块的信息不够全面，其更多强调的是磁盘的性能，比如IO等�?温度监控这一块也有，</summary>
         
       
     
@@ -507,10 +340,9 @@
       
         
         
-    <summary type="html">&lt;p&gt;先说一下整体的环境和安装方式&lt;/p&gt;
+    <summary type="html">&lt;p&gt;先说一下整体的环境和安装方�?&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;pve虚拟机专门开了一个lxc容器，用于安装tailscale，并利用此容器转发流量到局域网内的其他机器上，实现外部访问内网所有机器&lt;/li&gt;
-&lt;li&gt;由于tailscale本身的中转服务器derp没有中国的节点，测试</summary>
+&lt;li&gt;pve虚拟机专门开了一个lxc容器，用于安装tailscale，并利用此容器转发流量到局域网内的其他机器上，实现外部访问内网所有机�?-</summary>
         
       
     
@@ -521,9 +353,9 @@
     <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="pve" scheme="https://acchw.top/tags/pve/"/>
-    
     <category term="tailscale" scheme="https://acchw.top/tags/tailscale/"/>
+    
+    <category term="pve" scheme="https://acchw.top/tags/pve/"/>
     
   </entry>
   
@@ -610,6 +442,153 @@
     <category term="微服务" scheme="https://acchw.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     <category term="分布式" scheme="https://acchw.top/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql事务详解</title>
+    <link href="https://acchw.top/posts/42346/"/>
+    <id>https://acchw.top/posts/42346/</id>
+    <published>2023-05-29T00:00:00.000Z</published>
+    <updated>2023-05-29T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 以下都是针对InnoDb引擎， 描述的都是单机事务，说明一下个人对事务的一些理解。&lt;/p&gt;
+&lt;h1 id=&quot;事务的四大特性&quot;&gt;&lt;a href=&quot;#事务的四大特性&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="mysql" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/mysql/"/>
+    
+    
+    <category term="mysql" scheme="https://acchw.top/tags/mysql/"/>
+    
+    <category term="事务" scheme="https://acchw.top/tags/%E4%BA%8B%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用正则表达式总结</title>
+    <link href="https://acchw.top/posts/24604/"/>
+    <id>https://acchw.top/posts/24604/</id>
+    <published>2023-05-24T00:00:00.000Z</published>
+    <updated>2023-05-24T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;正则表达式语法&quot;&gt;&lt;a href=&quot;#正则表达式语法&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
+    
+    
+    <category term="正则" scheme="https://acchw.top/tags/%E6%AD%A3%E5%88%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>还是阳了</title>
+    <link href="https://acchw.top/posts/37012/"/>
+    <id>https://acchw.top/posts/37012/</id>
+    <published>2023-05-21T00:00:00.000Z</published>
+    <updated>2023-05-21T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;还是记录一下为好。时间是2023年5月17号， 我终于还是阳了。&lt;/p&gt;
+&lt;p&gt;5月17号早上起来的时候，</summary>
+        
+      
+    
+    
+    
+    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="生活" scheme="https://acchw.top/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>红米AC2100 openwrt下无法进入breed</title>
+    <link href="https://acchw.top/posts/64412/"/>
+    <id>https://acchw.top/posts/64412/</id>
+    <published>2023-05-01T11:10:00.000Z</published>
+    <updated>2023-05-01T11:10:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;之前的红米路由器AC2100刷的是openwrt，想换回pandavan，使用如下方法无法进入breed的web页面：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;先断电，然后找个针戳住路由器背后 Reset 小孔并插电，等路由器蓝灯一直闪烁后，浏览器输入</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
+    
+    
+    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
+    
+    <category term="路由器" scheme="https://acchw.top/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+    <category term="AC2100" scheme="https://acchw.top/tags/AC2100/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从alpine编译nginx的docker镜像</title>
+    <link href="https://acchw.top/posts/61959/"/>
+    <id>https://acchw.top/posts/61959/</id>
+    <published>2023-03-28T00:00:00.000Z</published>
+    <updated>2023-03-28T00:00:00.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;因为需要接入nginx监控，用的是vts模块，原生nginx并没有包含该模块，原本想着用别人已经编译好的， 但是一想后期可能还需要加入其他的模块，所以还是自己编译一个。&lt;/p&gt;
+&lt;p&gt;下面说一下具体的步骤。&lt;/p&gt;
+&lt;h1 id=&quot;编写dockerfile文件&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
+    
+    
+    <category term="nginx" scheme="https://acchw.top/tags/nginx/"/>
+    
+    <category term="docker - jenkins" scheme="https://acchw.top/tags/docker-jenkins/"/>
     
   </entry>
   
