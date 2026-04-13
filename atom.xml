@@ -1,616 +1,377 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>崔八由</title>
-  <icon>https://acchw.top/icon.png</icon>
-  
-  <link href="https://acchw.top/atom.xml" rel="self"/>
-  
-  <link href="https://acchw.top/"/>
-  <updated>2026-04-07T15:00:00.000Z</updated>
-  <id>https://acchw.top/</id>
-  
   <author>
     <name>崔八由</name>
-    
   </author>
-  
   <generator uri="https://hexo.io/">Hexo</generator>
-  
+  <icon>https://acchw.top/icon.png</icon>
+  <id>https://acchw.top/</id>
+  <link href="https://acchw.top/" rel="alternate"/>
+  <link href="https://acchw.top/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, 崔八由</rights>
+  <subtitle>七只鸟离开了夏天，飞向了秋天</subtitle>
+  <title>崔八由</title>
+  <updated>2026-04-07T15:00:00.000Z</updated>
   <entry>
-    <title>凸(艹皿艹 ) 推特被封了</title>
-    <link href="https://acchw.top/posts/48182/"/>
-    <id>https://acchw.top/posts/48182/</id>
-    <published>2026-04-07T15:00:00.000Z</published>
-    <updated>2026-04-07T15:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;操， 推特被封了。&lt;/p&gt;
-&lt;p&gt;这个账号很早就注册了，大概是2016年，之后一直没怎么用，中间基本上都是浏览，很少发帖。&lt;/p&gt;
-&lt;p&gt;最近捡起了这个账号，并开通了蓝V，</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>崔八由</name>
+    </author>
     <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
-    
-    
     <category term="推特" scheme="https://acchw.top/tags/%E6%8E%A8%E7%89%B9/"/>
-    
     <category term="X" scheme="https://acchw.top/tags/X/"/>
-    
+    <id>https://acchw.top/posts/48182/</id>
+    <link href="https://acchw.top/posts/48182/"/>
+    <published>2026-04-07T15:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>操， 推特被封了。</p>
+<p>这个账号很早就注册了，大概是2016年，之后一直没怎么用，中间基本上都是浏览，很少发帖。</p>
+<p>最近捡起了这个账号，并开通了蓝V，]]>
+    </summary>
+    <title>凸(艹皿艹 ) 推特被封了</title>
+    <updated>2026-04-07T15:00:00.000Z</updated>
   </entry>
-  
   <entry>
-    <title>第一次装机过程与记录</title>
-    <link href="https://acchw.top/posts/54175/"/>
-    <id>https://acchw.top/posts/54175/</id>
-    <published>2025-07-26T15:00:00.000Z</published>
-    <updated>2025-07-26T15:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;6月30号下的所有硬件单，7月1号就已经装好了，本来不想写的，但是想着最好还是记录一下，以便日后查看。&lt;/p&gt;
-&lt;p&gt;装机的配置清单是在蹲了几天的图吧和知乎，并结合微信小程序的装机助手里面别人的配置定下来的，总体还是有点超预算了。&lt;/p&gt;
-&lt;p&gt;因为是第一次装机，怕买到残次</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>崔八由</name>
+    </author>
     <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
-    
-    
     <category term="装机" scheme="https://acchw.top/tags/%E8%A3%85%E6%9C%BA/"/>
-    
     <category term="硬件" scheme="https://acchw.top/tags/%E7%A1%AC%E4%BB%B6/"/>
-    
+    <id>https://acchw.top/posts/54175/</id>
+    <link href="https://acchw.top/posts/54175/"/>
+    <published>2025-07-26T15:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>6月30号下的所有硬件单，7月1号就已经装好了，本来不想写的，但是想着最好还是记录一下，以便日后查看。</p>
+<p>装机的配置清单是在蹲了几天的图吧和知乎，并结合微信小程序的装机助手里面别人的配置定下来的，总体还是有点超预算了。</p>
+<p>因为是第一次装机，怕买到残次]]>
+    </summary>
+    <title>第一次装机过程与记录</title>
+    <updated>2025-07-26T15:00:00.000Z</updated>
   </entry>
-  
   <entry>
-    <title>记录一下今年治牙的过程</title>
-    <link href="https://acchw.top/posts/22065/"/>
-    <id>https://acchw.top/posts/22065/</id>
-    <published>2025-07-14T10:00:00.000Z</published>
-    <updated>2025-07-14T10:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今年对牙齿做了多次治疗，记录一下治疗过程。&lt;br&gt;2月份的时候，口腔半边很疼，怀疑是牙的问题（其实去年也出现过一次，但是当时疼了没多长时间就好了，所以没怎么关心），所以去了一趟医院，拍了一下片子，医生诊断是左上部分的智齿坏了，并且已经触及到神经，所以很疼。因为是智齿，拔掉也</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>崔八由</name>
+    </author>
     <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
     <category term="健康" scheme="https://acchw.top/tags/%E5%81%A5%E5%BA%B7/"/>
-    
+    <id>https://acchw.top/posts/22065/</id>
+    <link href="https://acchw.top/posts/22065/"/>
+    <published>2025-07-14T10:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>今年对牙齿做了多次治疗，记录一下治疗过程。<br>2月份的时候，口腔半边很疼，怀疑是牙的问题（其实去年也出现过一次，但是当时疼了没多长时间就好了，所以没怎么关心），所以去了一趟医院，拍了一下片子，医生诊断是左上部分的智齿坏了，并且已经触及到神经，所以很疼。因为是智齿，拔掉也]]>
+    </summary>
+    <title>记录一下今年治牙的过程</title>
+    <updated>2025-07-14T10:00:00.000Z</updated>
   </entry>
-  
   <entry>
-    <title>预测未来</title>
-    <link href="https://acchw.top/posts/40045/"/>
-    <id>https://acchw.top/posts/40045/</id>
-    <published>2025-04-04T00:00:00.000Z</published>
-    <updated>2025-04-04T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>崔八由</name>
+    </author>
     <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
     <category term="感悟" scheme="https://acchw.top/tags/%E6%84%9F%E6%82%9F/"/>
-    
+    <id>https://acchw.top/posts/40045/</id>
+    <link href="https://acchw.top/posts/40045/"/>
+    <published>2025-04-04T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p><img]]>
+    </summary>
+    <title>预测未来</title>
+    <updated>2025-04-04T00:00:00.000Z</updated>
   </entry>
-  
   <entry>
-    <title>最终还是投向了obsidian</title>
-    <link href="https://acchw.top/posts/33335/"/>
-    <id>https://acchw.top/posts/33335/</id>
-    <published>2025-03-09T00:00:00.000Z</published>
-    <updated>2025-03-09T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;之前写过一篇文章，讲述了一些&lt;a href=&quot;https://acchw.top/posts/18945/&quot;&gt;笔记软件的选择&lt;/a&gt;,</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>崔八由</name>
+    </author>
     <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
-    
-    
     <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="笔记" scheme="https://acchw.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
     <category term="obsidian" scheme="https://acchw.top/tags/obsidian/"/>
-    
+    <id>https://acchw.top/posts/33335/</id>
+    <link href="https://acchw.top/posts/33335/"/>
+    <published>2025-03-09T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>之前写过一篇文章，讲述了一些<a href="https://acchw.top/posts/18945/">笔记软件的选择</a>,]]>
+    </summary>
+    <title>最终还是投向了obsidian</title>
+    <updated>2025-03-09T00:00:00.000Z</updated>
   </entry>
-  
   <entry>
-    <title>pve lxc容器使用vnpy的问题</title>
-    <link href="https://acchw.top/posts/27377/"/>
-    <id>https://acchw.top/posts/27377/</id>
-    <published>2025-03-02T21:00:00.000Z</published>
-    <updated>2025-03-02T21:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近在网上找较近时间的一些期货1分钟K线数据，发现基本上都是需要付费的，所以想着自己去录制行情数据。&lt;/p&gt;
-&lt;p&gt;录制这一块使用了vnpy。vnpy本身支持行情录制，但是有两个问题不符合我现在的需求，需要解决：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;需要手动指定合约名称，而我的需求是</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>崔八由</name>
+    </author>
     <category term="理财" scheme="https://acchw.top/categories/%E7%90%86%E8%B4%A2/"/>
-    
-    
     <category term="pve" scheme="https://acchw.top/tags/pve/"/>
-    
     <category term="vnpy" scheme="https://acchw.top/tags/vnpy/"/>
-    
+    <id>https://acchw.top/posts/27377/</id>
+    <link href="https://acchw.top/posts/27377/"/>
+    <published>2025-03-02T21:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>最近在网上找较近时间的一些期货1分钟K线数据，发现基本上都是需要付费的，所以想着自己去录制行情数据。</p>
+<p>录制这一块使用了vnpy。vnpy本身支持行情录制，但是有两个问题不符合我现在的需求，需要解决：</p>
+<ol>
+<li>需要手动指定合约名称，而我的需求是]]>
+    </summary>
+    <title>pve lxc容器使用vnpy的问题</title>
+    <updated>2025-03-02T21:00:00.000Z</updated>
   </entry>
-  
   <entry>
-    <title>扔垃圾的感受</title>
-    <link href="https://acchw.top/posts/46394/"/>
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://acchw.top/tags/%E7%94%9F%E6%B4%BB/"/>
     <id>https://acchw.top/posts/46394/</id>
+    <link href="https://acchw.top/posts/46394/"/>
     <published>2025-03-02T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>今天去扔垃圾，</p>
+<p>突然发现将垃圾扔出去的时候，</p>
+<p>心里有一种莫名的快感。</p>
+<p>为什么呢？</p>
+<p>可能是将不要的东西丢掉，是对过去的一种告别（☺瞎矫情☺）。</p>]]>
+    </summary>
+    <title>扔垃圾的感受</title>
     <updated>2025-03-02T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今天去扔垃圾，&lt;/p&gt;
-&lt;p&gt;突然发现将垃圾扔出去的时候，&lt;/p&gt;
-&lt;p&gt;心里有一种莫名的快感。&lt;/p&gt;
-&lt;p&gt;为什么呢？&lt;/p&gt;
-&lt;p&gt;可能是将不要的东西丢掉，是对过去的一种告别（☺瞎矫情☺）。&lt;/p&gt;
-</summary>
-        
-      
-    
-    
-    
-    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="生活" scheme="https://acchw.top/tags/%E7%94%9F%E6%B4%BB/"/>
-    
   </entry>
-  
   <entry>
-    <title>解决macos sierra重新安装时报错-准备安装时发生错误</title>
-    <link href="https://acchw.top/posts/49721/"/>
-    <id>https://acchw.top/posts/49721/</id>
-    <published>2025-02-16T00:00:00.000Z</published>
-    <updated>2025-02-16T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近打算把之前的一个旧的苹果笔记本出售，型号是2015 macbook air，因为出售之前需要把系统整个清理干净，所以按照苹果官方的建议，先将磁盘抹掉，然后重新安装。&lt;/p&gt;
-&lt;p&gt;选择重新安装的时候使用了这个笔记本最刚开始的版本&lt;code&gt;macos</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>崔八由</name>
+    </author>
     <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
-    
-    
     <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="macos" scheme="https://acchw.top/tags/macos/"/>
-    
+    <id>https://acchw.top/posts/49721/</id>
+    <link href="https://acchw.top/posts/49721/"/>
+    <published>2025-02-16T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>最近打算把之前的一个旧的苹果笔记本出售，型号是2015 macbook air，因为出售之前需要把系统整个清理干净，所以按照苹果官方的建议，先将磁盘抹掉，然后重新安装。</p>
+<p>选择重新安装的时候使用了这个笔记本最刚开始的版本<code>macos]]>
+    </summary>
+    <title>解决macos sierra重新安装时报错-准备安装时发生错误</title>
+    <updated>2025-02-16T00:00:00.000Z</updated>
   </entry>
-  
   <entry>
-    <title>记录一下使用vercel搭建umami中需要注意的地方</title>
-    <link href="https://acchw.top/posts/1106/"/>
-    <id>https://acchw.top/posts/1106/</id>
-    <published>2025-02-07T00:00:00.000Z</published>
-    <updated>2025-02-07T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在使用vercel搭建umami的时候，步骤比较简单，直接使用官网的deploy按钮，一步一步来就行。&lt;/p&gt;
-&lt;p&gt;其中有一个点需要注意，在填写环境变量DATABASE_URL的时候，按照官网说明，对于umami应该使用的是POSTGRES_PRISMA_URL，但此时如</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>崔八由</name>
+    </author>
     <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="博客" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
-    
     <category term="博客" scheme="https://acchw.top/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-    <category term="umami" scheme="https://acchw.top/tags/umami/"/>
-    
-    <category term="vercel" scheme="https://acchw.top/tags/vercel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>还是不能太依赖自建服务</title>
-    <link href="https://acchw.top/posts/50024/"/>
-    <id>https://acchw.top/posts/50024/</id>
-    <published>2025-01-21T00:00:00.000Z</published>
-    <updated>2025-01-21T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;我发现有时还是不能太依赖自建的服务，否则后续升级的时候，可能会出现一系列问题。&lt;/p&gt;
-&lt;p&gt;比如我现在用来进行流量监控与分析的是自建的umami，最近因为需要用到其中的一些新功能，需要进行升级，但是发现升级比较困难，原因是旧版本umami用的mariadb版本比较老，新的</summary>
-        
-      
-    
-    
-    
-    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="self-hosted" scheme="https://acchw.top/tags/self-hosted/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android应用在上架Google Play时封闭式测试的一些建议</title>
-    <link href="https://acchw.top/posts/40888/"/>
-    <id>https://acchw.top/posts/40888/</id>
-    <published>2025-01-09T00:00:00.000Z</published>
-    <updated>2025-01-09T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近上架了一个自己写的App到Google</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
-    
-    
-    <category term="海外" scheme="https://acchw.top/tags/%E6%B5%B7%E5%A4%96/"/>
-    
-    <category term="Google Play" scheme="https://acchw.top/tags/Google-Play/"/>
-    
-    <category term="Android" scheme="https://acchw.top/tags/Android/"/>
-    
-    <category term="封闭式测试" scheme="https://acchw.top/tags/%E5%B0%81%E9%97%AD%E5%BC%8F%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM中的Shallow Size 和 Retained Size解释</title>
-    <link href="https://acchw.top/posts/25621/"/>
-    <id>https://acchw.top/posts/25621/</id>
-    <published>2024-09-27T00:00:00.000Z</published>
-    <updated>2024-09-27T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在使用相关的JVM内存工具查看堆栈情况时， 有两个指标&lt;code&gt;Shallow Size&lt;/code&gt;和&lt;code&gt;Shallow</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="java" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/java/"/>
-    
-    
-    <category term="java" scheme="https://acchw.top/tags/java/"/>
-    
-    <category term="jvm" scheme="https://acchw.top/tags/jvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>acme.sh自动生成泛域名证书的几个坑</title>
-    <link href="https://acchw.top/posts/16115/"/>
-    <id>https://acchw.top/posts/16115/</id>
-    <published>2024-05-20T00:00:00.000Z</published>
-    <updated>2024-05-20T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;先说一下我的环境与配置：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;域名：在namesilo上购买的&lt;/li&gt;
-&lt;li&gt;证书使用方式：nginx&lt;/li&gt;
-&lt;li&gt;nginx部署方式：docker&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;说一下在使用过程中可能会遇到的一些坑，</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
-    
-    
-    <category term="acme.sh" scheme="https://acchw.top/tags/acme-sh/"/>
-    
-    <category term="证书" scheme="https://acchw.top/tags/%E8%AF%81%E4%B9%A6/"/>
-    
-    <category term="namesilo" scheme="https://acchw.top/tags/namesilo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>老了</title>
-    <link href="https://acchw.top/posts/16268/"/>
-    <id>https://acchw.top/posts/16268/</id>
-    <published>2024-03-31T00:00:00.000Z</published>
-    <updated>2024-03-31T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今天在公交上，一个应该是初中或高中的学生，让我帮忙弄一下行李箱，叫我 “叔叔”， 这好像是我印象中第一次有陌生人叫我这个称呼，看来是真老了。&lt;/p&gt;
-&lt;p&gt;但我的人生还有许多事没做，必须加紧步伐，把有限的时间花费在更有意义的事情上。&lt;/p&gt;
-&lt;p&gt;同时，</summary>
-        
-      
-    
-    
-    
-    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-    <category term="生活" scheme="https://acchw.top/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>go学习笔记之指针</title>
-    <link href="https://acchw.top/posts/13710/"/>
-    <id>https://acchw.top/posts/13710/</id>
-    <published>2024-03-07T22:00:00.000Z</published>
-    <updated>2024-03-07T22:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;什么是指针&quot;&gt;&lt;a href=&quot;#什么是指针&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="go" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/go/"/>
-    
-    
-    <category term="go" scheme="https://acchw.top/tags/go/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pve主机使用smart_ctl监控磁盘信息</title>
-    <link href="https://acchw.top/posts/3239/"/>
-    <id>https://acchw.top/posts/3239/</id>
-    <published>2024-01-30T10:10:00.000Z</published>
-    <updated>2024-01-30T10:10:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;pve中一块nvme磁盘最近偶尔会报温度过高， 所以需要加个监控， 之前已经装过node_expoter, 但是其磁盘硬件监控这一块的信息不够全面，其更多强调的是磁盘的性能，比如IO等。 温度监控这一块也有， 但是不够直观明显，而且缺少其他的一些磁盘硬件本身的信息，</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    <category term="监控" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E7%9B%91%E6%8E%A7/"/>
-    
-    
     <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
-    
-    <category term="linux" scheme="https://acchw.top/tags/linux/"/>
-    
-    <category term="监控" scheme="https://acchw.top/tags/%E7%9B%91%E6%8E%A7/"/>
-    
-    <category term="prometheus" scheme="https://acchw.top/tags/prometheus/"/>
-    
+    <category term="umami" scheme="https://acchw.top/tags/umami/"/>
+    <category term="vercel" scheme="https://acchw.top/tags/vercel/"/>
+    <id>https://acchw.top/posts/1106/</id>
+    <link href="https://acchw.top/posts/1106/"/>
+    <published>2025-02-07T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>在使用vercel搭建umami的时候，步骤比较简单，直接使用官网的deploy按钮，一步一步来就行。</p>
+<p>其中有一个点需要注意，在填写环境变量DATABASE_URL的时候，按照官网说明，对于umami应该使用的是POSTGRES_PRISMA_URL，但此时如]]>
+    </summary>
+    <title>记录一下使用vercel搭建umami中需要注意的地方</title>
+    <updated>2025-02-07T00:00:00.000Z</updated>
   </entry>
-  
   <entry>
-    <title>tailscale的设置与安装</title>
-    <link href="https://acchw.top/posts/3940/"/>
-    <id>https://acchw.top/posts/3940/</id>
-    <published>2024-01-18T00:00:00.000Z</published>
-    <updated>2025-02-24T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;先说一下整体的环境和安装方式&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;pve虚拟机专门开了一个lxc容器，用于安装tailscale，并利用此容器转发流量到局域网内的其他机器上，实现外部访问内网所有机器&lt;/li&gt;
-&lt;li&gt;由于tailscale本身的中转服务器derp没有中国的节点，测试</summary>
-        
-      
-    
-    
-    
-    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    
-    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
-    
-    
-    <category term="pve" scheme="https://acchw.top/tags/pve/"/>
-    
-    <category term="tailscale" scheme="https://acchw.top/tags/tailscale/"/>
-    
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="self-hosted" scheme="https://acchw.top/tags/self-hosted/"/>
+    <id>https://acchw.top/posts/50024/</id>
+    <link href="https://acchw.top/posts/50024/"/>
+    <published>2025-01-21T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>我发现有时还是不能太依赖自建的服务，否则后续升级的时候，可能会出现一系列问题。</p>
+<p>比如我现在用来进行流量监控与分析的是自建的umami，最近因为需要用到其中的一些新功能，需要进行升级，但是发现升级比较困难，原因是旧版本umami用的mariadb版本比较老，新的]]>
+    </summary>
+    <title>还是不能太依赖自建服务</title>
+    <updated>2025-01-21T00:00:00.000Z</updated>
   </entry>
-  
   <entry>
-    <title>go中获取某个包下定义的所有变量</title>
-    <link href="https://acchw.top/posts/50851/"/>
-    <id>https://acchw.top/posts/50851/</id>
-    <published>2024-01-11T23:10:00.000Z</published>
-    <updated>2024-01-11T23:10:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;有这样一个场景， 我们在e这个包下， 有一个err_code.go文件，在其中自定义了一个错误码结构体和一些错误码，内容如下:&lt;/p&gt;
-&lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>崔八由</name>
+    </author>
     <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
+    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
+    <category term="Google Play" scheme="https://acchw.top/tags/Google-Play/"/>
+    <category term="Android" scheme="https://acchw.top/tags/Android/"/>
+    <category term="封闭式测试" scheme="https://acchw.top/tags/%E5%B0%81%E9%97%AD%E5%BC%8F%E6%B5%8B%E8%AF%95/"/>
+    <category term="海外" scheme="https://acchw.top/tags/%E6%B5%B7%E5%A4%96/"/>
+    <id>https://acchw.top/posts/40888/</id>
+    <link href="https://acchw.top/posts/40888/"/>
+    <published>2025-01-09T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>最近上架了一个自己写的App到Google]]>
+    </summary>
+    <title>Android应用在上架Google Play时封闭式测试的一些建议</title>
+    <updated>2025-01-09T00:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="java" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/java/"/>
+    <category term="java" scheme="https://acchw.top/tags/java/"/>
+    <category term="jvm" scheme="https://acchw.top/tags/jvm/"/>
+    <id>https://acchw.top/posts/25621/</id>
+    <link href="https://acchw.top/posts/25621/"/>
+    <published>2024-09-27T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>在使用相关的JVM内存工具查看堆栈情况时， 有两个指标<code>Shallow Size</code>和<code>Shallow]]>
+    </summary>
+    <title>JVM中的Shallow Size 和 Retained Size解释</title>
+    <updated>2024-09-27T00:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="other" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/other/"/>
+    <category term="acme.sh" scheme="https://acchw.top/tags/acme-sh/"/>
+    <category term="证书" scheme="https://acchw.top/tags/%E8%AF%81%E4%B9%A6/"/>
+    <category term="namesilo" scheme="https://acchw.top/tags/namesilo/"/>
+    <id>https://acchw.top/posts/16115/</id>
+    <link href="https://acchw.top/posts/16115/"/>
+    <published>2024-05-20T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>先说一下我的环境与配置：</p>
+<ul>
+<li>域名：在namesilo上购买的</li>
+<li>证书使用方式：nginx</li>
+<li>nginx部署方式：docker</li>
+</ul>
+<p>说一下在使用过程中可能会遇到的一些坑，]]>
+    </summary>
+    <title>acme.sh自动生成泛域名证书的几个坑</title>
+    <updated>2024-05-20T00:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://acchw.top/tags/%E7%94%9F%E6%B4%BB/"/>
+    <id>https://acchw.top/posts/16268/</id>
+    <link href="https://acchw.top/posts/16268/"/>
+    <published>2024-03-31T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>今天在公交上，一个应该是初中或高中的学生，让我帮忙弄一下行李箱，叫我 “叔叔”， 这好像是我印象中第一次有陌生人叫我这个称呼，看来是真老了。</p>
+<p>但我的人生还有许多事没做，必须加紧步伐，把有限的时间花费在更有意义的事情上。</p>
+<p>同时，]]>
+    </summary>
+    <title>老了</title>
+    <updated>2024-03-31T00:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
     <category term="go" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/go/"/>
-    
-    
     <category term="go" scheme="https://acchw.top/tags/go/"/>
-    
+    <id>https://acchw.top/posts/13710/</id>
+    <link href="https://acchw.top/posts/13710/"/>
+    <published>2024-03-07T22:00:00.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="什么是指针"><a href="#什么是指针" class="headerlink"]]>
+    </summary>
+    <title>go学习笔记之指针</title>
+    <updated>2024-03-07T22:00:00.000Z</updated>
   </entry>
-  
   <entry>
-    <title>mysql是如何解决不可重复读和幻读的</title>
-    <link href="https://acchw.top/posts/21511/"/>
-    <id>https://acchw.top/posts/21511/</id>
-    <published>2023-09-11T00:00:00.000Z</published>
-    <updated>2023-09-11T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Mysql的默认隔离级别是&lt;strong&gt;可重复读&lt;/strong&gt;。并且在该级别下， 也不会出现幻读（一般意义上的可重复读是存在幻读的）， 那么Mysql是如何实现的呢？&lt;/p&gt;
-&lt;h1 id=&quot;不可重复读的解决方案&quot;&gt;&lt;a href=&quot;#不可重复读的解决方案&quot;</summary>
-        
-      
-    
-    
-    
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    <category term="监控" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E7%9B%91%E6%8E%A7/"/>
+    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
+    <category term="linux" scheme="https://acchw.top/tags/linux/"/>
+    <category term="监控" scheme="https://acchw.top/tags/%E7%9B%91%E6%8E%A7/"/>
+    <category term="prometheus" scheme="https://acchw.top/tags/prometheus/"/>
+    <id>https://acchw.top/posts/3239/</id>
+    <link href="https://acchw.top/posts/3239/"/>
+    <published>2024-01-30T10:10:00.000Z</published>
+    <summary>
+      <![CDATA[<p>pve中一块nvme磁盘最近偶尔会报温度过高， 所以需要加个监控， 之前已经装过node_expoter, 但是其磁盘硬件监控这一块的信息不够全面，其更多强调的是磁盘的性能，比如IO等。 温度监控这一块也有， 但是不够直观明显，而且缺少其他的一些磁盘硬件本身的信息，]]>
+    </summary>
+    <title>pve主机使用smart_ctl监控磁盘信息</title>
+    <updated>2024-01-30T10:10:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
+    <category term="pve" scheme="https://acchw.top/tags/pve/"/>
+    <category term="tailscale" scheme="https://acchw.top/tags/tailscale/"/>
+    <id>https://acchw.top/posts/3940/</id>
+    <link href="https://acchw.top/posts/3940/"/>
+    <published>2024-01-18T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>先说一下整体的环境和安装方式</p>
+<ul>
+<li>pve虚拟机专门开了一个lxc容器，用于安装tailscale，并利用此容器转发流量到局域网内的其他机器上，实现外部访问内网所有机器</li>
+<li>由于tailscale本身的中转服务器derp没有中国的节点，测试]]>
+    </summary>
+    <title>tailscale的设置与安装</title>
+    <updated>2025-02-24T00:00:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>崔八由</name>
+    </author>
     <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
+    <category term="go" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/go/"/>
+    <category term="go" scheme="https://acchw.top/tags/go/"/>
+    <id>https://acchw.top/posts/50851/</id>
+    <link href="https://acchw.top/posts/50851/"/>
+    <published>2024-01-11T23:10:00.000Z</published>
+    <summary>
+      <![CDATA[<p>有这样一个场景， 我们在e这个包下， 有一个err_code.go文件，在其中自定义了一个错误码结构体和一些错误码，内容如下:</p>
+<figure class="highlight go"><table><tr><td]]>
+    </summary>
+    <title>go中获取某个包下定义的所有变量</title>
+    <updated>2024-01-11T23:10:00.000Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
     <category term="mysql" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/mysql/"/>
-    
-    
     <category term="mysql" scheme="https://acchw.top/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一致性哈希算法解读</title>
-    <link href="https://acchw.top/posts/35513/"/>
-    <id>https://acchw.top/posts/35513/</id>
-    <published>2023-06-11T00:00:00.000Z</published>
+    <id>https://acchw.top/posts/21511/</id>
+    <link href="https://acchw.top/posts/21511/"/>
+    <published>2023-09-11T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>Mysql的默认隔离级别是<strong>可重复读</strong>。并且在该级别下， 也不会出现幻读（一般意义上的可重复读是存在幻读的）， 那么Mysql是如何实现的呢？</p>
+<h1 id="不可重复读的解决方案"><a href="#不可重复读的解决方案"]]>
+    </summary>
+    <title>mysql是如何解决不可重复读和幻读的</title>
     <updated>2023-09-11T00:00:00.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;首先理解一下哈希函数的意思。&lt;/p&gt;
-&lt;h1 id=&quot;哈希函数&quot;&gt;&lt;a href=&quot;#哈希函数&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="分布式" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-    
-    <category term="微服务" scheme="https://acchw.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
-    
-    <category term="分布式" scheme="https://acchw.top/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
   </entry>
-  
+  <entry>
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="分布式" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    <category term="微服务" scheme="https://acchw.top/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    <category term="分布式" scheme="https://acchw.top/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    <id>https://acchw.top/posts/35513/</id>
+    <link href="https://acchw.top/posts/35513/"/>
+    <published>2023-06-11T00:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>首先理解一下哈希函数的意思。</p>
+<h1 id="哈希函数"><a href="#哈希函数" class="headerlink"]]>
+    </summary>
+    <title>一致性哈希算法解读</title>
+    <updated>2023-09-11T00:00:00.000Z</updated>
+  </entry>
 </feed>
