@@ -11,7 +11,24 @@
   <rights>All rights reserved 2026, 崔八由</rights>
   <subtitle>七只鸟离开了夏天，飞向了秋天</subtitle>
   <title>崔八由</title>
-  <updated>2026-04-16T12:00:00.000Z</updated>
+  <updated>2026-05-11T14:00:00.000Z</updated>
+  <entry>
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
+    <category term="其他" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%85%B6%E4%BB%96/"/>
+    <category term="安全" scheme="https://acchw.top/tags/%E5%AE%89%E5%85%A8/"/>
+    <id>https://acchw.top/posts/17699/</id>
+    <link href="https://acchw.top/posts/17699/"/>
+    <published>2026-05-11T14:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>第一次遇到这种情况，事情整体经过是这样的。</p>
+<h1 id="缘起"><a href="#缘起" class="headerlink"]]>
+    </summary>
+    <title>内网设备被挖矿了</title>
+    <updated>2026-05-11T14:00:00.000Z</updated>
+  </entry>
   <entry>
     <author>
       <name>崔八由</name>
@@ -178,8 +195,8 @@
     </author>
     <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
     <category term="博客" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%8D%9A%E5%AE%A2/"/>
-    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
     <category term="博客" scheme="https://acchw.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
     <category term="umami" scheme="https://acchw.top/tags/umami/"/>
     <category term="vercel" scheme="https://acchw.top/tags/vercel/"/>
     <id>https://acchw.top/posts/1106/</id>
@@ -356,22 +373,5 @@
     </summary>
     <title>go中获取某个包下定义的所有变量</title>
     <updated>2024-01-11T23:10:00.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>崔八由</name>
-    </author>
-    <category term="编程" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/"/>
-    <category term="mysql" scheme="https://acchw.top/categories/%E7%BC%96%E7%A8%8B/mysql/"/>
-    <category term="mysql" scheme="https://acchw.top/tags/mysql/"/>
-    <id>https://acchw.top/posts/21511/</id>
-    <link href="https://acchw.top/posts/21511/"/>
-    <published>2023-09-11T00:00:00.000Z</published>
-    <summary>
-      <![CDATA[<p>Mysql的默认隔离级别是<strong>可重复读</strong>。并且在该级别下， 也不会出现幻读（一般意义上的可重复读是存在幻读的）， 那么Mysql是如何实现的呢？</p>
-<h1 id="不可重复读的解决方案"><a href="#不可重复读的解决方案"]]>
-    </summary>
-    <title>mysql是如何解决不可重复读和幻读的</title>
-    <updated>2023-09-11T00:00:00.000Z</updated>
   </entry>
 </feed>
