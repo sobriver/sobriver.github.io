@@ -11,7 +11,24 @@
   <rights>All rights reserved 2026, 崔八由</rights>
   <subtitle>七只鸟离开了夏天，飞向了秋天</subtitle>
   <title>崔八由</title>
-  <updated>2026-11-10T10:30:00.000Z</updated>
+  <updated>2026-11-25T18:50:00.000Z</updated>
+  <entry>
+    <author>
+      <name>崔八由</name>
+    </author>
+    <category term="生活" scheme="https://acchw.top/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://acchw.top/tags/%E7%94%9F%E6%B4%BB/"/>
+    <id>https://acchw.top/posts/57232/</id>
+    <link href="https://acchw.top/posts/57232/"/>
+    <published>2026-11-25T18:50:00.000Z</published>
+    <summary>
+      <![CDATA[<p>真的，有些人的素质极其之低。</p>
+<p>原本以为只是网上的一些段子，但是当它真的照到你的生活的时候，你就会有多么的无语。</p>
+<p><img]]>
+    </summary>
+    <title>林子大了什么鸟都有</title>
+    <updated>2026-11-25T18:50:00.000Z</updated>
+  </entry>
   <entry>
     <author>
       <name>崔八由</name>
@@ -233,8 +250,8 @@
     </author>
     <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
     <category term="博客" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E5%8D%9A%E5%AE%A2/"/>
-    <category term="博客" scheme="https://acchw.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
+    <category term="博客" scheme="https://acchw.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     <category term="umami" scheme="https://acchw.top/tags/umami/"/>
     <category term="vercel" scheme="https://acchw.top/tags/vercel/"/>
     <id>https://acchw.top/posts/1106/</id>
@@ -355,24 +372,5 @@
     </summary>
     <title>go学习笔记之指针</title>
     <updated>2024-03-07T22:00:00.000Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>崔八由</name>
-    </author>
-    <category term="折腾" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/"/>
-    <category term="虚拟机" scheme="https://acchw.top/categories/%E6%8A%98%E8%85%BE/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    <category term="折腾" scheme="https://acchw.top/tags/%E6%8A%98%E8%85%BE/"/>
-    <category term="linux" scheme="https://acchw.top/tags/linux/"/>
-    <category term="监控" scheme="https://acchw.top/tags/%E7%9B%91%E6%8E%A7/"/>
-    <category term="prometheus" scheme="https://acchw.top/tags/prometheus/"/>
-    <id>https://acchw.top/posts/3239/</id>
-    <link href="https://acchw.top/posts/3239/"/>
-    <published>2024-01-30T10:10:00.000Z</published>
-    <summary>
-      <![CDATA[<p>pve中一块nvme磁盘最近偶尔会报温度过高， 所以需要加个监控， 之前已经装过node_expoter, 但是其磁盘硬件监控这一块的信息不够全面，其更多强调的是磁盘的性能，比如IO等。 温度监控这一块也有， 但是不够直观明显，而且缺少其他的一些磁盘硬件本身的信息，]]>
-    </summary>
-    <title>pve主机使用smart_ctl监控磁盘信息</title>
-    <updated>2024-01-30T10:10:00.000Z</updated>
   </entry>
 </feed>
